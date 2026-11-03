@@ -34,4 +34,11 @@ Build an original exhibition interface in this repository. Foreground a bounded 
 
 ## PRs
 
-Implementation is locally verified on `codex/opening-chapter`; draft PR link will be recorded on issue #1. No merge or deployment. Owner acceptance remains pending.
+| PR | Scope | State |
+| --- | --- | --- |
+| [#2](https://github.com/xdjs/music-nft-era/pull/2) | Source-backed chapter, research, adapter and verification | Draft; locally verified; no merge/deployment |
+
+Owner acceptance remains pending. Local checks passed: syntax, formatting, 5 unit tests and 12 browser tests. Real Bandcamp playback/pause/stop and all three directory identities were checked separately. Full evidence: docs/VERIFICATION.md.
+
+- [ ] Pete reviews and accepts the local experience.
+- [ ] Any public hosting is separately authorized.
