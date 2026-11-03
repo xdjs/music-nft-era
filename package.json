@@ -1,0 +1,24 @@
+{
+  "name": "music-nft-era",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A source-backed listening exhibition from Music Nerd",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check server.mjs && node --check src/app.js && node --check src/data.js && node --check src/directory.js",
+    "ci": "npm run check && npm run format:check && npm test && npm run test:browser",
+    "test:browser": "playwright test",
+    "format:check": "prettier --check index.html src server.mjs scripts tests playwright.config.js package.json .github",
+    "check:live": "node scripts/check-live.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "prettier": "^3.9.10"
+  }
+}

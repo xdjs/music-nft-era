@@ -1,0 +1,11 @@
+node_modules/
+.firecrawl/
+.DS_Store
+AGENT-PROMPT.md
+*-tree.txt
+docs/musicnerd-design-reference.md
+captures/reference-*.png
+work/
+
+test-results/
+playwright-report/

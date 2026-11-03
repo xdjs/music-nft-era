@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="A scene, in the making. Follow the songs and people connecting one chapter of the Music NFT era."
+    />
+    <meta name="color-scheme" content="dark light" />
+    <title>A scene, in the making — Music Nerd</title>
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to the story</a>
+    <header class="masthead">
+      <a class="brand" href="#/" aria-label="Music Nerd exhibition home"
+        >music nerd<span>field notes</span></a
+      >
+      <nav aria-label="Exhibition">
+        <a href="#/moment/remix" id="chapter-link">The chapter</a
+        ><a href="#/explore" id="explore-link">People & connections</a
+        ><a href="#/about" class="about-link">About</a
+        ><button id="theme" class="icon" aria-label="Switch to light theme">
+          ◐
+        </button>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1"></main>
+    <div
+      id="announcement"
+      class="sr-only"
+      role="status"
+      aria-live="polite"
+    ></div>
+    <dialog id="sheet" aria-labelledby="sheet-title">
+      <div class="sheet-bar">
+        <button id="sheet-back" class="quiet">← Back</button
+        ><button id="sheet-close" class="icon" aria-label="Close detail">
+          ×
+        </button>
+      </div>
+      <div id="sheet-content"></div>
+    </dialog>
+    <dialog id="listening" aria-labelledby="listen-title">
+      <div class="sheet-bar">
+        <span>Listening room</span
+        ><button id="listen-close" class="quiet">Stop & close ×</button>
+      </div>
+      <h2 id="listen-title"></h2>
+      <p class="muted">
+        Official Bandcamp player. Press play below; sound never starts
+        automatically.
+      </p>
+      <div id="player"></div>
+      <p id="player-status" role="status"></p>
+      <a id="player-fallback" target="_blank" rel="noopener noreferrer"
+        >Open the artist’s Bandcamp ↗</a
+      >
+    </dialog>
+    <noscript
+      >This exhibition needs JavaScript for its guided journey.
+      <a
+        href="https://sofractures.bandcamp.com/album/nokmly-the-collaborative-remixes"
+        >Listen to the opening release on Bandcamp</a
+      >.</noscript
+    >
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>
