@@ -22,7 +22,9 @@ No authentication, writes, persistence, background jobs or private knowledge are
 
 ## Media and navigation
 
-Only a user listening action creates one official Bandcamp iframe. It has no autoplay permission. Closing, Escape or navigating away removes it. Slow/failed embeds retain a link to the artist’s release. Artist/source sheets are native modal dialogs; URLs preserve selection and browser history. Closing nested sheets returns to the originating moment or filtered index. Direct detail links close into their containing route.
+A user listening action can resolve an allowlisted Ethereum token through `tokenURI` at a recorded block, then present its original media in a native audio/video player. Metadata and storage redirects are restricted to approved hosts; raw descriptions are not returned. Collection browsing uses the public Blockscout index, preserves uint256 IDs as strings, and is labeled separately from live chain reads. Unknown contracts cannot be requested. RPC/storage failures remain retryable; no replacement audio is substituted. See [coverage and source inventory](NFT-COVERAGE.md).
+
+A separate Bandcamp listening action creates one official iframe. It has no autoplay permission. Closing, Escape or navigating away removes it. Slow/failed embeds retain a link to the artist’s release. Artist/source sheets are native modal dialogs; URLs preserve selection and browser history. Closing nested sheets returns to the originating moment or filtered index. Direct detail links close into their containing route.
 
 ## Smallest next connection steps
 
@@ -30,3 +32,7 @@ Only a user listening action creates one official Bandcamp iframe. It has no aut
 2. If Music Nerd later exposes a supported public moment/source API, map it into the same fixture shape. Do not expose private Lore or add speculative ingestion.
 3. For hosting, implement these fixed routes in the chosen authorized runtime; keep secrets absent from client props. Preserve the CSP’s official Bandcamp frame origin and rerun identity/media/error tests on that host.
 4. Confirm publication rights/editorial review before expanding to locally hosted artist media. Existing embeds and links need no asset-copy pipeline.
+
+## Legacy Catalog / Zora V1
+
+For the explicitly selected original Zora V1 contract only, `tokenURI` is media and `tokenMetadataURI` is metadata. Read both at the same block; return only title, original media/artwork and provenance fields. Shared Zora contract membership does not establish Catalog release or artist attribution. The collection index can include non-music works, and the UI explains this boundary.

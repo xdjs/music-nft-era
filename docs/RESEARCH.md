@@ -59,3 +59,11 @@ Public holdings endpoint: [Blockscout address inventory](https://eth.blockscout.
 - Get multiple participant perspectives on the CHAOS allocation/IP dispute. The present account is Songcamp’s retrospective.
 - Complete cross-chain collection research only if a later chapter needs it; verify promising metadata against original artist releases.
 - Invite contributor review before any public launch. No outreach was sent.
+
+## Narrative expansion: newcomer orientation
+
+The primary sequence now asks what was collected, why artists tried it, where they met, what they made, and what remains. This is an editorial interpretation of the meeting's small-slice/deep-experience direction, not an attributed screen-by-screen prescription.
+
+Eleven contextual moments were added, including an explanatory opening. Historical branches cover RAC/Zora's $TAPE precursor, Camp Genesis, Daniel Allan's Overstimulated, the Gansevoort showcase, Sound's first drop, Soulection's shared-payment experiment and the difference between permissionless contracts and opening the website to all artists. Sources, dates, uncertainty and direct links are in [SOURCES.md](SOURCES.md).
+
+Boundaries: $TAPE was fungible, not the first music NFT. The main story is a partial 2021–24 community chapter with an earlier prologue and later platform notices. Shared-stage evidence is not collaboration evidence. Platform shutdown notices do not establish whether each individual media file survives. Artist recollections stay attributed; contradictory launch chronology is retained in source notes.

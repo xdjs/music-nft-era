@@ -44,3 +44,18 @@ test("every foregrounded connection carries evidence and uncertainty is retained
   assert.ok(moments.find((m) => m.id === "sound").uncertainty);
   assert.ok(!relationships.some((r) => r.type === "Friendship"));
 });
+
+test("person context and external links retain resolvable public evidence", () => {
+  for (const person of people) {
+    assert.ok(person.bio, person.id);
+    assert.ok(person.sources.length, person.id);
+    for (const id of person.sources)
+      assert.ok(sources[id], `${person.id}: ${id}`);
+    for (const link of person.links || []) {
+      const url = new URL(link.url);
+      assert.equal(url.protocol, "https:");
+      assert.equal(url.username, "");
+      assert.equal(url.password, "");
+    }
+  }
+});

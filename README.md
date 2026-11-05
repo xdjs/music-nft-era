@@ -1,10 +1,14 @@
+[Source and hosting status](docs/SOURCE-HOSTING.md) · [Music Nerd Lab](https://lab.musicnerd.net)
+
 # A scene, in the making
 
-A standalone Music Nerd listening exhibition about one connected chapter of the Music NFT era. Start with a remix, follow Three Oscillators into Songcamp’s CHAOS, then explore releases, gatherings and the Network Archives publication.
+A standalone Music Nerd listening exhibition about one connected chapter of the Music NFT era. Begin with earlier blockchain-music experiments and Catalog, enter the online rooms where artists met, then follow releases, collaborations, gatherings and what people carried forward. The homepage is a continuous photographic documentary with changing archival frames; deeper evidence and collections remain optional.
 
-**Six guided stops · 15 moments · 46 credited people/contributors · 18 sources.** A partial community account, not a definitive history.
+**Nine guided stops · 26 moments · 47 credited people/contributors · 29 sources.** A partial community account, not a definitive history.
 
 ![Opening, desktop](captures/opening-desktop-dark.png)
+
+The presentation was rebuilt around artist press photography, Songcamp CC0lab visuals and a nine-scene contact sheet. Image credits distinguish portraits from event evidence. Media rights notes apply before public distribution.
 
 ## Run locally
 
@@ -19,19 +23,23 @@ Open **http://127.0.0.1:4178**. The server binds to localhost only. Change `PORT
 
 ## Try the journey
 
-1. Choose **Listen first** and press play in the official Bandcamp player. Pause there or choose **Stop & close**.
-2. Enter the chapter; open **Three Oscillators** in the credits.
-3. Follow **Boy Untitled**, inspect the oral-history evidence, and go back or close the sheet.
-4. Follow the next stop into **Walls**, then **CHAOS**. Side paths cover CC0lab, the common pool, Splits and CLUB CHAOS.
-5. Continue through Sound.xyz, Zoratopia and Network Archives, or search the wider people/moment index.
+1. Scroll straight from the opening into the illustrated story. Artist and source details are optional detours. Or enter the chapter and explore **The music / The token / The relationship**. Listen only if you choose.
+2. Follow early digital records into the Twitter, Discord and virtual rooms where people met.
+3. Continue through Sound editions, CHAOS, Walls and Zoratopia. Open Three Oscillators → Boy Untitled → supporting oral history; close or go back without losing your place.
+4. Hear a later remix and consider what remains when platforms close.
+5. Use the opening's visual timeline to branch into $TAPE, Camp Genesis, Overstimulated, the 2021 Gansevoort showcase, Soulection and Sound opening to all artists.
+
+## Collection listening
+
+Use **Play the collection** on the opening to listen while exploring. The bottom player persists across routes, with an expandable queue, shuffle, skip, pause and seeking. It plays the 81 selected works, including videos, rather than claiming complete artist discographies.
 
 ## What is live?
 
 | Surface | Data |
 | --- | --- |
-| Historical moments, dates, people, relationships and source notes | Locally authored, public source-backed fixture in `src/data.js` |
+| Historical moments, dates, people, relationships and source notes | Locally authored, public source-backed fixtures in `src/data.js` and `src/narrative.js` |
 | Dutchyyy, Sound of Fractures and Three Oscillators directory identities | On-demand, read-only Music Nerd public API check; pinned ID plus independent profile reference |
-| Music | Official Bandcamp embeds loaded only on request; no autoplay, local audio files or rehosted artwork |
+| Music | 81 selected works across 39 Ethereum NFT contracts; live token metadata and original media on request, paginated collection browsing; separate official Bandcamp embeds |
 | Pete’s public collection | Partial Ethereum research only; no wallet connection or raw export in the app/repository |
 | Corrections/contributor submissions | Clearly labeled future feature; no account or write API |
 
@@ -39,8 +47,13 @@ The adapter exposes only a confirmed artist ID, name and Music Nerd URL. Failed,
 
 ## Research, design and verification
 
+- [Era research ledger and 88 discovered archive entries](docs/ERA-RESEARCH-LEDGER.md)
+- [NFT contracts, edition sources and artist coverage](docs/NFT-COVERAGE.md)
+- [Coverage gaps and deeper research plan](docs/EXPANSION.md)
 - [Reference matrix and historical research](docs/RESEARCH.md)
 - [Design brief and composition](docs/DESIGN.md)
+- [Visual sources, credits and publication rights](docs/MEDIA.md)
+- [Images for all 47 people and contributors](docs/PEOPLE-IMAGES.md)
 - [Source inventory](docs/SOURCES.md) and [HTTP link checks](docs/SOURCE-LINK-CHECKS.md)
 - [Data contract and implementation boundary](docs/DATA.md)
 - [Verification, captures and limitations](docs/VERIFICATION.md)
@@ -54,3 +67,7 @@ npm run ci
 The repeatable browser suite mocks upstream directory failure and media failure intentionally. Separate live checks confirmed all three identities and actual Bandcamp playback/pause/stop. To repeat live checks with the server running: `npm run check:live` (requires network access).
 
 No hosted preview, deployment or merge has been performed. To publish later: review the chapter with contributors, authorize a hosting target, configure the read-only adapter there, rerun same-origin/browser checks, and approve deployment. No data migration is needed.
+
+## Reproduce the build / Music Nerd Lab
+
+The [Lab protocol packet](docs/protocol/README.md) records the prompts, process, evidence resources, design decisions, implementation map and verification required to recreate this experience. It is a local preparation artifact, not a submitted Lab entry. Keep it aligned with material changes to the experience.

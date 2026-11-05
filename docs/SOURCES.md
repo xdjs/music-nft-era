@@ -4,6 +4,17 @@ Research access date: November 3, 2026. Historical publication dates are separat
 
 | ID | Original source | Attribution | Relevant date | Evidence type | Support and limitation |
 | --- | --- | --- | --- | --- | --- |
+| nina2026 | [SoundCloud acquires Nina Protocol](https://soundcloud.com/playbook-articles/soundcloud-acquires-nina-protocol-to-preserve-and-amplify-independent-music-culture) | SoundCloud | 22 July 2026 | Platform announcement | Announces the acquisition after Nina's wind-down, preservation of the editorial archive and genre map, and an opt-in path for artists. This establishes the announced plan, not verification of every migrated release. |
+| nftBasics | [NFTs, ownership and the work underneath](https://creativecommons.org/cc-and-nfts/) | Creative Commons | Undated reference · accessed 3 November 2026 | Rights explainer | Distinguishes the unique token from the associated creative work and its copyright. A token transfer does not automatically transfer copyright. |
+| tape | [How to buy $TAPE on Zora](https://banklesscom.beehiiv.com/p/how-to-buy-tape-on-zora) | Jacob Horne, Zora co-founder · guest account on Bankless | 12 May 2020 | Builder account | Describes RAC's preceding-day launch of tokens redeemable for 100 physical BOY cassettes. This was a fungible-token redemption experiment, not a claim to the first music NFT. |
+| genesis | [A Place For Music and the New Internet to Crash Into Each Other](https://paragraph.com/@songcamp/a-place-for-music-and-the-new-internet-to-crash-into-each-other) | Songcamp · published history with participant accounts | 28 June 2023 · recounts 2021 | Community retrospective | Situates Camp Genesis in pandemic-era disruption; records its April 12, 2021 start, nine musicians, two visual artists and two operators. Publishes images of early Discord and the May 2021 virtual gathering. Some incidental date/day wording in the retrospective is inconsistent; it is not used here. |
+| allan | [The Overstimulated Journey](https://paragraph.com/@danielallan/the-overstimulated-journey) | Daniel Allan | 7 January 2022 | Artist account | Dates the crowdfund to September 27, 2021 and the EP release to January 7, 2022; describes Catalog, Sound and an NFT NYC showcase with VÉRITÉ, LATASHÁ and Matthew Chaim. Financial figures and participation are the artist's account. |
+| soundYear | [Sound’s 1 Year Anniversary](https://paragraph.com/@soundxyz/sound-s-1-year-anniversary) | Sound team | 30 November 2022 · anniversary context | Platform retrospective | Recalls OSHI's CHILDHOOD as the first drop, Soulection's mixtape and splits, and the first anniversary mix. Platform-reported figures are not an independent impact study. |
+| soundOpen | [Sound.xyz Opens to All](https://paragraph.com/@soundxyz/sound-xyz-opens-to-all-raises-20m-to-help-artists-make-a-living-from-their-music) | Sound team | 12 July 2023 | Platform announcement | Announces opening upload tools beyond the previously selected artist group. The page's 2022 launch phrasing differs from its own November 2021 anniversary record; this exhibit uses the earlier dated record for launch context. |
+| soundProtocol | [Introducing Sound Protocol](https://paragraph.com/@soundxyz/introducing-sound-protocol) | Sound team | 21 September 2022 | Platform announcement | Distinguishes permissionless contracts from the still-curated Sound website, describing splits, metadata, and releases on artist-owned sites. |
+| soundEnd | [Sunsetting Sound](https://paragraph.com/@soundxyz/sunsetting-sound) | David Greenstein and the Sound team | Announces 16 January 2026 shutdown | Founder announcement | Announces the website going offline and a shift to Vault. Its assurances about decentralized media are the team's claims; this prototype has not audited every token or storage location. |
+| catalogFin | [Catalog, Fin](https://fin.catalog.works/) | Catalog team | Closing announcement · accessed 3 November 2026 | Platform retrospective | Describes the 2021 one-of-one record marketplace, subsequent Radio and download formats, and closure. Lists March 9 without a year, so no exact closure year is inferred from that line. Distinguishes older records requiring media migration. |
+| ambieEarly | [AmbieNFT: The First 16](https://ecency.com/@drumoperator/ambienft-the-first-16-or-my-experience-diving-headfirst-into-music-nfts) | Drum_Operator / AmbieNFT | 2021 · artist's early project account | Artist account | Describes finding peers through Twitter and Spaces, modular-synth composition and exchanges with other generative musicians. Recollection and enthusiasm are attributed to the artist. |
 | remixes | [NOKMLY — The Collaborative Remixes](https://sofractures.bandcamp.com/album/nokmly-the-collaborative-remixes) | Sound of Fractures · artist release notes and credits | 12 May 2023 | Primary release | Credits Three Oscillators, Scott Quinn, AmbieNFT, Kabuki and Green Ring. Jamie describes connecting artist communities through the remix release. |
 | walls | [Creating CHAOS: an oral history of “Walls”](https://archive.metalabel.com/magazine/features/creating-chaos-an-oral-history-of-walls) | Austin Robey · Metalabel; participants Boy Untitled, Lackhoney and Three Oscillators | 29 September 2022 | Participant interview | The three artists describe their roles and making Walls in Act II. Their recollections are attributed, not independently observed studio events. |
 | architecture | [How to Build a Headless Band: Architecting Chaos](https://paragraph.com/@songcamp/how-to-build-a-headless-band-architecting-chaos) | Songcamp | 2022 · exact date not confirmed here | Organizer account | Describes an eight-week plan: 45 musicians, rotating trios, houses, alchemy teams, and visual, technical, radio, lore, economics and operations contributors. |
@@ -27,12 +38,23 @@ Research access date: November 3, 2026. Historical publication dates are separat
 
 | Moment | Event date | Sources |
 | --- | --- | --- |
+| What is a music NFT? | Start here | nftBasics, soundYear |
+| RAC and Zora’s $TAPE | 11 May 2020 | tape |
+| Why artists tried this | 2020–2021 | genesis, catalogFin |
+| Twitter, Discord, late-night calls | 2021–early 2022 | walls, ambieEarly |
+| Songcamp’s Camp Genesis | 12 April 2021 | genesis |
+| Daniel Allan’s Overstimulated | 27 September 2021–7 January 2022 | allan |
+| The Gansevoort showcase | November 2021 | allan |
+| Sound’s listening-and-collecting format | Late 2021–2022 | soundYear, allan, onboarding |
+| Soulection and song splits | 2022 | soundYear, soundProtocol |
+| From curated entry to open tools | 21 September 2022 / 12 July 2023 | soundProtocol, soundOpen, onboarding |
+| After the platform moment | 2024–2026 · epilogue | network, soundEnd, catalogFin, ben, nina2026 |
 | A remix becomes a meeting place | 12 May 2023 | remixes |
 | Inside a temporary band | 2022 · Act II | walls |
 | The structure behind CHAOS | Spring–June 2022 | architecture, festival, year |
 | Sound.xyz and the shared mix | 20 April 2022 | sound, onboarding |
 | From community rooms to Zoratopia | March–June 2022 | zoratopia, zoraJune, onboarding |
-| The community becomes an archive | December 2024 | network, networkReport |
+| The community becomes an archive | 2 December 2024 | network, networkReport |
 | SCENES | 12 June 2024 | scenes |
 | CHAOS branches into CC0lab | 2022 · before pack launch | year |
 | Rights, value and a common pool | After launch · recounted June 2023 | year |
@@ -45,6 +67,23 @@ Research access date: November 3, 2026. Historical publication dates are separat
 
 ## Structured model
 
-The reviewed fixture lives in [src/data.js](../src/data.js): 15 moments, 46 named people/credited contributors, 34 typed edges. People retain source IDs, roles and confirmed references where available. Moments retain date precision, artifact links and uncertainty. Relationships carry a specific type, supporting source and originating moment. Sources carry the original URL, attribution, date and supporting passage summary. This module is a public, deliberately limited projection, not an export of Music Nerd data.
+The reviewed fixture lives in [src/data.js](../src/data.js): 26 moments, 47 named people/credited contributors, 37 typed edges. People retain source IDs, roles and confirmed references where available. Moments retain date precision, artifact links and uncertainty. Relationships carry a specific type, supporting source and originating moment. Sources carry the original URL, attribution, date and supporting passage summary. This module is a public, deliberately limited projection, not an export of Music Nerd data.
 
 Network Archives is a publication relationship; its credits do not imply pairwise musical collaboration. The complete CHAOS roster is not recovered.
+
+## Earlier context and Catalog’s builders — 3 November 2026
+
+- **Ujo Team, 7 November 2016:** [The Tiny Human retrospective](https://medium.com/consensys-media/evolution-of-ujo-music-the-tiny-human-retrospective-e23136197c31). Builder account of Imogen Heap’s 2015 licensing/payment prototype. Not labeled an edition NFT or the first music NFT. The linked old Imogen Heap page returned 404 during this pass; the retrospective remains available.
+- **Jeremy Stern and Mike McKain, 31 January 2024:** [1confirmation founder interview](https://1confirmation.substack.com/p/founder-interview-series-1). Their musical backgrounds, SoundCloud influence, Loft Radio predecessor and rationale for Catalog. Firsthand answers, retrospective, published by an investor. Named links in the documentary open this account.
+- **Catalog founder interview, 28 April 2021:** [FUXWITHIT](https://fuxwithit.com/2021/04/28/catalog-interview/). Rechecked for March 2021 launch context, collecting/listening distinction and the specific EPROM release. Speculative permanence and future-rights claims remain attributed ambitions, not guarantees.
+
+The opening no longer uses Daniel Allan’s September 2021 crowdfund as the apparent beginning. It follows earlier experiments, then Catalog, then Songcamp; Allan is introduced later within release/funding strategies. This selected chronology is not an exhaustive origins survey.
+
+### Artist-led mechanics and motives — 3 November 2026
+
+- [CHAOS launch interview, Marvin Lin / FWB, 3 June 2022](https://fwb.help/editorial/chaos-reigns-songcamp-music-web3): read the contributor interview with Matthew Chaim, Mark Redito and Greydient. Used for rotating groups, four-song pack reveal, compensation design and experimentation as an artistic practice. Launch intentions are not an audited outcome. The original article's 45-song launch count and later retrospective's 48-song count refer to different accounts; do not silently reconcile them.
+- [Walls oral history, Austin Robey / Metalabel, 29 September 2022](https://archive.metalabel.com/magazine/features/creating-chaos-an-oral-history-of-walls): reread participant descriptions of the unused vocal, Boy Untitled's personal connection, production and asynchronous collaboration. Optional detail now connects the song to CHAOS mechanics.
+- [musicben original X thread, 28 February 2022](https://x.com/musicben_eth/status/1498321357234393089): original public post readable through Firecrawl; opening autobiographical account used, platform summaries not independently adopted. No claim that all artists shared his experience.
+- Search-only leads retained, not used as testimony: musicben posts 1587523651171221505, 1664653122973597698 and 1940046136410349944. Publication identity and historical cross-links still need deeper verification.
+
+All new story passages are attributed editorial fixtures. This research adds no blockchain-verified recordings or wallet associations. The existing Walls and EPROM token readers are unchanged.

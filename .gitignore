@@ -9,3 +9,21 @@ work/
 
 test-results/
 playwright-report/
+
+.vercel/
+.vercel
+
+# Local credentials, captures and research caches
+.env*
+!.env.example
+.publishing-key-*
+.vercel/
+node_modules/
+dist/
+work/
+data/
+test-results/
+playwright-report/
+.firecrawl/
+research/TRANSCRIPT.md
+research/raw-reel.json

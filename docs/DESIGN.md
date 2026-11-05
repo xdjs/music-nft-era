@@ -1,53 +1,84 @@
-# A scene, in the making
+> Current implementation: [CINEMATIC-DIRECTION.md](CINEMATIC-DIRECTION.md). The sections below preserve previous iterations; the tilted opening and split-layout treatment were replaced after review.
 
-## Direction, 2026-11-03
+# A scene, in the making — visual rebuild
 
-A listening exhibition about how people found one another and made things together. Open with a specific song and a credited connection, not a taxonomy of NFTs. The first chapter follows Sound of Fractures through a remix credit into Three Oscillators and CHAOS, then opens onto shared platforms, gatherings, and Network Archives. The editorial path moves between 2022 and 2024; dates stay visible. Earlier 2021 context and later reporting live in the source index. This is a partial community account, not a definitive era boundary.
+The first presentation made the research visible but failed as an immersive music experience. This direction replaces its fabricated sleeve stack and wiki sidebar with a photographic opening and an image-led sequence. This is a proposed independent exhibition identity, not an approved Music Nerd website redesign.
 
-### Representative composition
+## Composition
 
 ```
-music nerd / field notes                      The chapter   People & connections   About
+Music Nerd                                      Chapter / People
+        [LATASHÁ portrait]    [CC0lab artwork]    [Rae performance]
+              A SCENE,
+              IN THE MAKING.
+        A song connects people.     Enter chapter / Listen first
+Sound of Fractures → Three Oscillators → CHAOS
 
-2022–2024 / an opening chapter
-
-A scene,                       [three spacious, offset record sleeves]
-in the making.                 [their credits connect; click to follow]
-
-Songs became meeting places.    [Sound of Fractures → Three Oscillators → CHAOS]
-Follow one thread through the people
-who made an internet feel like a scene.
-
-[Enter the chapter] [Listen first]
-
-Six stops / one thread           01 —— 02 —— 03 —— 04 —— 05 —— 06
+Scene: [large photograph/artifact across screen]
+       date   Title over quiet image area
+       one idea + listening control
+       compact six-stop contact sheet
+       credits / story / evidence / next connection
 ```
 
-The memorable element is a stack of original typographic record sleeves that unfolds into credited relationships. These are editorial diagrams, explicitly not original release artwork. No fabricated archival photography. Detail panels read as exhibition labels; a persistent trail keeps the visitor oriented. The archive is a list of dated moments and named people, not a cloud of speculative graph edges.
+The opening is a collage of real people and a real creative artifact. It is a navigable editorial composition: every photograph goes somewhere, and its caption distinguishes press imagery from event evidence. Scenes then give one subject the full frame. The six-stop contact sheet preserves orientation without a dashboard sidebar. Details remain readable below the frame; evidence and relationships open in reversible panels.
 
-### Tokens and continuity
+Palette: photographic indigo #20223e, exhibition black #101016, chalk #f4f4f1, Music Nerd pink #ff75d8, muted lilac #b9b5be. Light mode uses cool paper #eeedf2; photographic stages keep their deliberate dark contrast in both themes.
 
-- Canvas: Music Nerd charcoal `#1a1a1a`; paper/text `#f4f4f1`; muted `#b9b5be`.
-- Pink action `#ff75d8`, black label; cyan `#2ad4fc` and mint `#19ffb8` only as connection accents.
-- Dark glass surfaces, 16–24px radius, 44px minimum touch controls. Light mode uses white surfaces and charcoal text, with the same black-on-pink action.
-- System sans, as in Music Nerd; fluid tight display type, restrained supporting labels, 16–19px body, 60-character reading measure.
-- Desktop: asymmetric text/art spread. Phone: text then an intentionally smaller sleeve composition; no horizontal page overflow or hover-dependent access.
-- Reuse the identity's lowercase wordmark treatment, action colors, rounded controls, focus ring, and glass. Deliberately replace directory cards with paced editorial spreads.
+Type: locally hosted Barlow Condensed Bold (OFL) for monumental titles, system sans for readable narrative and controls. Display type is a physical part of the collage. Sentence-case editorial headings remain readable; the home title alone acts like a gig poster.
 
-### Motion
+Motion: a short image reveal on entering a scene, restrained image zoom on intentional hover, horizontal touch scrolling of the scene contact sheet. Native scrolling, ordinary links, browser back and clear previous/next controls remain primary. Reduced motion removes transforms and transitions. No autoplay sound, mouse-dependent navigation or animated banner.
 
-Wodniack's banner is excluded. Observed below it: an enclosing perspective grid, scroll-linked section composition, and typographic shifts. Its navigation remained on one URL during the inspected clicks; do not claim tested browser-history behavior there. Adapt depth and continuity, not its grid, font, colors, or assets.
+## Critique before implementation
 
-In this prototype, user-triggered forward/back movement shifts the incoming spread by a small distance in the corresponding direction; related material slides into a side sheet while the story stays behind it. Native browser history, explicit back controls, and focus restoration carry the navigation. Reduced motion removes movement and transforms. No scroll hijacking, custom cursor, or animated background loop.
+A dark interface with pink buttons alone is generic. The distinguishing material here is the community itself: LATASHÁ's playful press photograph, Rae Isla photographed performing, Iman Europe's portrait and Songcamp's CC0lab artwork. Do not replace missing release covers with invented covers. CC0lab imagery is always identified as that later project, including where it illustrates the wider Songcamp thread. Portraits are not documentary evidence of attendance.
 
-### Design critique before implementation
+Wodniack informs the sense of depth and entering/leaving compositions, not its banner or identity. Music Nerd retains its quiet wordmark, pink accent, accessible controls and identity connections. A visual journey takes precedence over exposing every field on arrival.
 
-Removed a proposed all-artist graph: it would falsely equalize collaboration, publication, and shared-platform evidence. Removed decorative waveforms: they could be mistaken for actual audio data. Use labeled credit connections and original sleeve typography instead. Avoid a marketplace grid and financial headline statistics. The opening must offer a real official player and explain why the connected person matters.
+## Narrative revision: a newcomer can enter
 
-## Content and data boundary
+Keep the approved-in-progress photographic composition, display type, colors and tactile scene navigation. Change the primary sequence from a remix-first tour to an explanatory documentary: understand the collectible → understand why artists experimented → enter the online rooms → follow release formats → experience CHAOS and Walls → meet in person → hear a later connection → consider what remains.
 
-Historical copy is an authored, source-backed local fixture. Only independently matched public Music Nerd identities can be refreshed by the read-only adapter. Missing or ambiguous records remain unlinked. No production writes or private knowledge reads. The interface explains these boundaries in About rather than scattering engineering details through the story.
+```
+Photographic opening / plain-language premise / enter or listen
+  ↓
+What is a music NFT? [The music | The token | The relationship]
+  ↓
+Early records → Online rooms → Sound → CHAOS → Walls → Zoratopia
+  ↓                          ↘ sourced branches and artifacts
+A later remix → What survives?
+```
 
-## Completion checks
+The primer is a small interactive explanation, not a glossary wall: switching its three controls changes the explanation and preserves focus, with sources one click away. Chapter labels communicate the question each scene answers. Supporting moments stay in a visual timeline below the opening and in the wider index. An era-scale chronological map supplies orientation; it does not claim a comprehensive first/last history. 2020 is a prologue, 2021–24 the main community chapter, and the 2026 platform notices a clearly separated epilogue.
 
-Arrival → listen → first moment → credited artist → related moment → provenance → close/back. Repeat at 1440px and 390px, both themes; verify direct URLs, keyboard focus, reduced motion, unavailable media, and failed identity lookup. Capture the rendered result, then correct visual defects before handoff.
+Use new contemporary artifacts from Songcamp's published history (a May 2021 virtual gathering and early Discord) and Daniel Allan's own account. Do not use a later portrait as documentary event evidence. Headlines remain short, body copy explains what changed, and transitions explain why the next moment follows. Preserve all existing deep links and credited imagery.
+
+## Scroll-first direction
+
+Keep Barlow, existing Music Nerd accents, photographs and source sheets. The first screen leads directly into a continuous documentary, then the optional timeline. The visitor should read by scrolling and click only to deepen a thread. Use sticky images to maintain context while short passages change; transform the project artwork into credited people when the subject shifts from structure to collaboration. All passages remain readable without animation. Native scroll and history are retained. See EXPANSION.md for the broader historical coverage plan and current limits.
+
+## Documentary pass informed by Metal colombiano
+
+Read the served implementation at `127.0.0.1:4179` and inspected its actual home flow at desktop and phone widths. Reference captures `reference-4179-*` remain ignored. The useful behavior was continuous entry, full-width image scenes alternating with reading, contextual media stops and chapter navigation. This pass preserves our Barlow/pink identity and uses our own source-backed content; it does not copy the metal prototype's paper collage, artwork or text.
+
+Seven scroll sections / fourteen passages now frame approximately 1,200 words, targeting a 6–8 minute experience with time for images and optional listening (not a measured user-study duration). Full-width online-room and gathering scenes vary the previous uniform two-column layout. LATASHÁ uses a top-anchored contained portrait without zoom; mobile places text after the image so the face is not obscured. Chapter buttons, release-format comparison and end-of-story people/moment/listening paths provide optional navigation.
+
+## Composition rhythm — 3 November revision
+
+Retain exhibition black/chalk/pink/lilac, Barlow display and readable sans body. Change the spatial rhythm, not the identity. Artist and closing chapters put reading on the left and portraits on the right. The editions chapter opens with a wide artifact, then two adjacent arguments beneath it. Online-room passages move from left to right across the shared scene. Listening interludes shift between a paired-record comparison, three vertical sleeves and a featured performance. Mobile reflows these into image/reading sequences without overlap or scroll hijacking. Existing chapter tracking supplies orientation; movement must not hide text or depend on animation.
+
+## Narrative diagnosis and opening revision
+
+The opening previously started three times: the hero invited a route change, a row of topic links offered choices, and a second title banner introduced the scrolling section. Seven persistent chapter buttons then made reading feel like operating an index. Removed the entry/listening CTA pair, topic-link row and second banner. Image credits are disclosed on demand; chapter navigation is collapsed behind one control with a quiet current-chapter label.
+
+Begin with Daniel Allan's September 2021 crowdfund and January 2022 release. A concrete creative goal gives the NFT explanation a reason to follow. Then move through the mechanism, online rooms, release formats, CHAOS, gatherings and afterlives. Copy bridges each opening scene into the next rather than describing the prototype or defending the archive. This is one documented entry into the era, not a claim that Allan originated music NFTs.
+
+Remaining editorial weaknesses: the middle still includes long explanatory passages; the alternate cover-series interlude is a second storyline and needs a clearer transition from Walls; the ending groups several platform histories too quickly. The next editorial pass should distinguish cause from chronology, give each scene one dramatic question and bring firsthand voices forward with source-backed attribution. More animation alone will not fix those problems. Preserve factual caveats in source/details while retaining any distinction necessary to understand the main story correctly.
+
+## Reference reinspection: Medellín Metal
+
+Read current served app.js/style.css at port 4179, then accessed the actual open Chrome window through desktop CUA after the browser host failed. Observed its 402px responsive hero, image-backed prologue and an artist detail panel. Compared with prior saved desktop captures. Its strongest transferable choices: images occupying the scene rather than a fixed half-width illustration; several short beats crossing one persistent image; alternating photographic darkness and quieter reading surfaces; human names linking naturally to details; medium-specific listening/video interludes. Current reference source also uses modest scroll-driven image drift with reduced-motion fallback. A high-end revision should plan these scene changes as a storyboard, retain legibility and source access, and avoid simply adding more decorative animation or copying the reference's torn-paper identity.
+
+## Six-movement implementation
+
+The current sequence supersedes the seven-section description above. See [DOCUMENTARY-SCRIPT.md](DOCUMENTARY-SCRIPT.md) for the editorial and composition brief. The token primer is now within the artist movement. The CHAOS listening interlude features Walls alone and leads to its 43-song selection; the unrelated TK/AL3C comparison remains available in Recordings. Sources and secondary paths sit inside Go deeper. The ending separates closures, preservation, and Pete’s attributed builder perspective. Native scroll, artwork playback, queue and reversible details remain intact.
