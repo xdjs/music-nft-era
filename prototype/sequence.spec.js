@@ -403,3 +403,18 @@ test("playing inside a chapter exposes the player and loading feedback", async (
   );
   await expect(page.locator(".player-expanded")).toBeVisible();
 });
+
+test("homepage is the documentary and the old draft address redirects", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator("#history-start h1")).toHaveText(
+    "The Web3Music Era.",
+  );
+  await expect(page.locator(".film-hero-copy")).toHaveCount(0);
+  await page.goto("/sequence/#history-afterglow");
+  await expect(page).toHaveURL(/\/#history-afterglow$/);
+  await expect(
+    page.locator('#history-afterglow img[src*="rae-isla-live"]').first(),
+  ).toBeVisible();
+});

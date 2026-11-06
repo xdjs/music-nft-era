@@ -20,8 +20,9 @@ const files = new Map([
   ["/prototype/", "prototype/index.html"],
   ["/prototype/prototype.css", "prototype/prototype.css"],
   ["/prototype/prototype.js", "prototype/prototype.js"],
-  ["/", "index.html"],
-  ["/index.html", "index.html"],
+  ["/", "prototype/sequence.html"],
+  ["/legacy/", "index.html"],
+  ["/index.html", "prototype/sequence.html"],
   ["/src/app.js", "src/app.js"],
   ["/src/playlist.js", "src/playlist.js"],
   ["/src/media-recovery.js", "src/media-recovery.js"],
@@ -124,6 +125,10 @@ export async function handler(req, res) {
   if (req.method !== "GET" && req.method !== "HEAD") {
     res.writeHead(405);
     return res.end("Read-only prototype");
+  }
+  if (url.pathname === "/sequence/" || url.pathname === "/sequence") {
+    res.writeHead(308, { Location: "/" + url.search });
+    return res.end();
   }
   if (url.pathname.startsWith("/api/collection/")) {
     const record = nftCatalog.find((r) => r.id === url.pathname.slice(16));
