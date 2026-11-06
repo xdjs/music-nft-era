@@ -1,13 +1,13 @@
 [Source and hosting status](docs/SOURCE-HOSTING.md) · [Music Nerd Lab](https://lab.musicnerd.net)
 
-# A scene, in the making
+# The Web3 Music Era
 
 ## Originator and creative direction
 
 Concept, editorial direction and creative development by **[Pete Rango](https://github.com/p3t3rango)**, built with AI assistance. Music Nerd is the publishing context; repository ownership does not replace the creator credit.
 
 
-A standalone Music Nerd listening exhibition about one connected chapter of the Music NFT era. Begin with earlier blockchain-music experiments and Catalog, enter the online rooms where artists met, then follow releases, collaborations, gatherings and what people carried forward. The homepage is a continuous photographic documentary with changing archival frames; deeper evidence and collections remain optional.
+A standalone Music Nerd listening exhibition about one connected chapter of the Web3 music era. Begin with earlier blockchain-music experiments and Catalog, enter the online rooms where artists met, then follow releases, collaborations, gatherings and what people carried forward. The homepage is a continuous photographic documentary with changing archival frames; deeper evidence and collections remain optional.
 
 The cinematic draft is available at **`/sequence/`**, with **The Collection** holding 241 selected works, including 18 videos. This is a partial community account, not a definitive history. The earlier presentation remains at `/`.
 

@@ -600,3 +600,14 @@ portraits.jah = {
   url: "https://www.byjah.art/",
   kind: "work artwork",
 };
+
+portraits["jamee-cornelia"] = {
+  personId: "jamee-cornelia",
+  file: null,
+  alt: "Jamee Cornelia’s artist-selected Bandcamp profile image",
+  credit: "Jamee Cornelia · official Bandcamp profile image",
+  url: "https://jameecornelia.bandcamp.com/",
+  kind: "artist profile image",
+  evidence: "https://jameecornelia.bandcamp.com/album/harvest",
+  retrieved: "2026-11-06",
+};

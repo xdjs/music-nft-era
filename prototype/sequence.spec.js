@@ -232,8 +232,11 @@ test("foundations precede experiments and the performance follows Zoratopia", as
 }) => {
   await page.goto("/sequence/");
   await expect(page.locator("#history-start h1")).toHaveText(
-    "The MusicNFT era.",
+    "The Web3Music Era.",
   );
+  await page.screenshot({
+    path: `/tmp/web3-music-era-${test.info().project.name}.png`,
+  });
   const order = await page.evaluate(() =>
     [
       "history-start",
@@ -312,4 +315,91 @@ test("artist display names retain accents while older filter links and searches 
       '#context-body a[href="https://www.quicknode.com/blog/feature-fridays-spinamp"]',
     ),
   ).toBeVisible();
+});
+
+test("ambient performance moves silently only in its scene and honors reduced motion", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/sequence/");
+  await scene(page, 0);
+  const v = page.locator("#performance");
+  await expect
+    .poll(() => v.evaluate((e) => e.currentTime))
+    .toBeGreaterThan(0.2);
+  expect(await v.evaluate((e) => e.muted)).toBe(true);
+  await expect(v).toHaveAttribute("src", "/media/iman-mwwm-loop.webm");
+  await page.locator("#history-future-surf").scrollIntoViewIfNeeded();
+  await expect.poll(() => v.evaluate((e) => e.paused)).toBe(true);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.reload();
+  await scene(page, 0);
+  expect(await v.evaluate((e) => e.paused && !e.currentSrc)).toBe(true);
+});
+
+test("collection artwork changes before a delayed original-media lookup completes", async ({
+  page,
+}) => {
+  await page.route("**/api/nft/**", async (route) => {
+    await new Promise((r) => setTimeout(r, 1500));
+    await route.fulfill({ json: { status: "unavailable" } });
+  });
+  await page.goto("/sequence/#music?q=No%20One%20Knows");
+  await page
+    .locator(
+      '[data-listen="sound-legacy-fa947daea2b941da51ed42147cb9e8cdcf6445fc-1"]',
+    )
+    .click();
+  await expect(page.locator(".player-cover")).toHaveAttribute(
+    "src",
+    "/media/nokmly-480.webp",
+  );
+  await expect
+    .poll(() =>
+      page
+        .locator(".player-cover")
+        .evaluate((e) => e.complete && e.naturalWidth > 0),
+    )
+    .toBe(true);
+});
+
+test("camp history and collaborator portraits open useful context without sale-timestamp warnings", async ({
+  page,
+}) => {
+  await page.goto("/sequence/");
+  await expect(
+    page.locator('#history-chaos a[href="#chapter-elektra"]').first(),
+  ).toBeVisible();
+  await page
+    .locator('#history-chaos a[href="#chapter-elektra"]')
+    .first()
+    .click();
+  await expect(page.locator("#context-body")).toContainText(
+    "Camp Genesis was Songcamp’s first camp",
+  );
+  await page.goto("/sequence/#chapter-latasha-videos");
+  await expect(page.locator("#context-body")).not.toContainText(
+    "What remains unconfirmed",
+  );
+  await page.goto("/sequence/");
+  await expect(page.locator("#history-catalog .doc-people a")).toHaveCount(3);
+  await expect(page.locator("#history-future-surf .doc-people a")).toHaveCount(
+    3,
+  );
+});
+
+test("playing inside a chapter exposes the player and loading feedback", async ({
+  page,
+}) => {
+  await page.route("**/api/nft/**", async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await route.fulfill({ json: { status: "unavailable" } });
+  });
+  await page.goto("/sequence/#chapter-latasha-videos");
+  await page.locator('#context [data-library-play="latasha-zora-623"]').click();
+  await expect(page.locator("#context")).not.toBeVisible();
+  await expect(page.locator('.player-track [role="status"]')).toHaveText(
+    "Loading original recording…",
+  );
+  await expect(page.locator(".player-expanded")).toBeVisible();
 });

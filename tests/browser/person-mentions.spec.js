@@ -182,7 +182,9 @@ test("record library filters contributors and collections without privileging CH
   await page.goto("/#/records");
   await expect(page.locator(".collection-spotlight")).toHaveCount(0);
   await page.getByLabel("Artists", { exact: true }).selectOption("Pete Rango");
-  await expect(page.locator(".nft-card")).toHaveCount(2);
+  await expect(page.locator(".nft-card")).toHaveCount(4);
+  await expect(page.locator(".nft-grid")).toContainText("Yell & Scream");
+  await expect(page.locator(".nft-grid")).toContainText("STAR GIRL");
   await expect(page.locator(".nft-grid")).toContainText("NOT4ME");
   await expect(page.locator(".nft-grid")).toContainText("MIAMI FREESTYLE");
   await page.screenshot({

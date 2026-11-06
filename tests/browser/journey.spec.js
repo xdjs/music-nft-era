@@ -27,7 +27,7 @@ for (const theme of ["dark", "light"]) {
           ),
       )
       .toBe(true);
-    await expect(page.locator("h1")).toHaveText("A scene,in the making.");
+    await expect(page.locator("h1")).toHaveText("The Web3Music Era.");
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,

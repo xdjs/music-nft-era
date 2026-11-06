@@ -43,7 +43,11 @@ const files = new Map([
   ["/favicon.svg", "public/favicon.svg"],
 ]);
 for (const name of [
+  "web3-music-era-cover.png",
   "helmet-city-poster.png",
+  "iman-mwwm-loop.webm",
+  "nokmly-480.webp",
+  "video-latasha-623-1500.webp",
   "lab-preview-20261104.png",
   "sound-of-fractures-press.jpg",
   "latasha-press.jpg",
@@ -97,6 +101,7 @@ for (const record of nftCatalog) {
     files.set(record.localArtwork, `public${record.localArtwork}`);
 }
 const types = {
+  webm: "video/webm",
   webp: "image/webp",
   jpg: "image/jpeg",
   png: "image/png",
@@ -114,7 +119,7 @@ export async function handler(req, res) {
   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
   res.setHeader(
     "Content-Security-Policy",
-    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://arweave.net https://*.arweave.net https://ipfs.filebase.io https://arpeggi-prod-public.s3.us-west-2.amazonaws.com; media-src https://gateway.pinata.cloud https://arweave.net https://*.arweave.net https://ipfs.filebase.io https://arpeggi-prod-public.s3.us-west-2.amazonaws.com; connect-src 'self'; frame-src https://bandcamp.com; object-src 'none'; base-uri 'none'; frame-ancestors 'self' https://lab.musicnerd.net https://lab.musicnerd.vercel.app",
+    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://arweave.net https://*.arweave.net https://ipfs.filebase.io https://arpeggi-prod-public.s3.us-west-2.amazonaws.com; media-src 'self' https://turbo-gateway.com https://*.turbo-gateway.com https://gateway.pinata.cloud https://arweave.net https://*.arweave.net https://ipfs.filebase.io https://arpeggi-prod-public.s3.us-west-2.amazonaws.com; connect-src 'self'; frame-src https://bandcamp.com; object-src 'none'; base-uri 'none'; frame-ancestors 'self' https://lab.musicnerd.net https://lab.musicnerd.vercel.app",
   );
   if (req.method !== "GET" && req.method !== "HEAD") {
     res.writeHead(405);

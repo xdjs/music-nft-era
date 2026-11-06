@@ -74,7 +74,7 @@ test("collection queue persists through navigation and supports playback, skip, 
   await expect(player).toBeHidden();
   await expect(player.locator("audio,video")).toHaveCount(0);
 });
-test("queue advances at the end and bounds consecutive failed recordings", async ({
+test("queue advances at the end but keeps a failed selection for retry", async ({
   page,
 }) => {
   let reads = 0;
@@ -109,7 +109,7 @@ test("queue advances at the end and bounds consecutive failed recordings", async
     "Playback stopped",
     { timeout: 10000 },
   );
-  expect(reads).toBe(3);
+  expect(reads).toBe(1);
 });
 
 test("next recording buffers silently and promotes the same element without another lookup", async ({
