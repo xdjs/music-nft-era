@@ -1,3 +1,4 @@
+import { videoImport } from "./video-import.js";
 import { soundImport as soundV1Optimism } from "./sound-import-v1-10.js";
 import { soundLegacyImport } from "./sound-legacy-import.js";
 import { soundImport as soundV1 } from "./sound-import-v1-1.js";
@@ -2007,3 +2008,5 @@ nftCatalog.push(
     },
   ],
 );
+
+nftCatalog.push(...videoImport);

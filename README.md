@@ -9,7 +9,7 @@ Concept, editorial direction and creative development by **[Pete Rango](https://
 
 A standalone Music Nerd listening exhibition about one connected chapter of the Music NFT era. Begin with earlier blockchain-music experiments and Catalog, enter the online rooms where artists met, then follow releases, collaborations, gatherings and what people carried forward. The homepage is a continuous photographic documentary with changing archival frames; deeper evidence and collections remain optional.
 
-**Nine guided stops · 26 moments · 47 credited people/contributors · 29 sources.** A partial community account, not a definitive history.
+The cinematic draft is available at **`/sequence/`**, with **The Collection** holding 241 selected works, including 18 videos. This is a partial community account, not a definitive history. The earlier presentation remains at `/`.
 
 ![Opening, desktop](captures/opening-desktop-dark.png)
 

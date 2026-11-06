@@ -3392,3 +3392,38 @@ a.person-mention:focus-visible {
 .branch-recordings {
   margin-block: 2rem 3rem;
 }
+
+/* Video selections open their viewing surface immediately. */
+.collection-player.watching-video .playlist-screen video {
+  max-height: 52svh;
+  min-height: 180px;
+  object-fit: contain;
+}
+.collection-player .queue-heading [data-action="fullscreen"] {
+  border: 1px solid currentColor;
+  border-radius: 24px;
+  padding: 8px 14px;
+  min-height: 44px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.collection-player [data-action="fullscreen"][hidden] {
+  display: none;
+}
+.collection-player .playlist-screen video:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  max-height: none;
+  object-fit: contain;
+  background: black;
+}
+@media (max-width: 650px) {
+  .watching-video .queue-count {
+    display: none;
+  }
+  .watching-video .queue-heading h2 {
+    font-size: 22px;
+    margin: 0;
+    flex: 1;
+  }
+}

@@ -146,7 +146,9 @@ export async function readNFT(record, fetcher = fetch) {
     let imageURL = null;
     try {
       imageURL = storageURL(
-        legacyCatalog ? metadata.body?.artwork?.info?.uri : metadata.image,
+        legacyCatalog
+          ? metadata.body?.artwork?.info?.uri || metadata.image
+          : metadata.image,
       );
     } catch {}
     return {
@@ -157,7 +159,11 @@ export async function readNFT(record, fetcher = fetch) {
       blockNumber: parseInt(block, 16),
       checkedAt: new Date().toISOString(),
       title: String(
-        (legacyCatalog ? metadata.body?.title : metadata.name) || record.title,
+        (legacyCatalog
+          ? metadata.body?.title || metadata.name
+          : metadata.name) ||
+          record.title ||
+          "Untitled recording",
       ).slice(0, 200),
       artist: String(metadata.artist_name || metadata.artist || "").slice(
         0,

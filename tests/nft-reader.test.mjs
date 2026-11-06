@@ -165,3 +165,43 @@ test("multi-chain reads use fixed RPC hosts and ERC1155 uses uri(uint256)", asyn
   );
   assert.equal(requested, false);
 });
+
+test("legacy Zora artist videos use top-level metadata without leaking descriptions", async () => {
+  const metadata = {
+    name: "GOGO WYNE.",
+    mimeType: "video/mp4",
+    description: "Source-only credits",
+    image: "ipfs://cover",
+  };
+  const encoded =
+    "data:application/json;base64," +
+    Buffer.from(JSON.stringify(metadata)).toString("base64");
+  const calls = [];
+  const result = await readNFT(
+    {
+      ...r,
+      kind: "video",
+      contract: "0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7",
+    },
+    async (_url, options) => {
+      const body = JSON.parse(options.body);
+      calls.push(body);
+      return Response.json({
+        result:
+          body.method === "eth_blockNumber"
+            ? "0x123"
+            : encode(
+                body.params[0].data.startsWith("0x157c3df9")
+                  ? encoded
+                  : "ipfs://originalvideo",
+              ),
+      });
+    },
+  );
+  assert.equal(result.title, "GOGO WYNE.");
+  assert.equal(result.mediaURI, "ipfs://originalvideo");
+  assert.equal(result.imageURL, "https://ipfs.filebase.io/ipfs/cover");
+  assert.equal(result.kind, "video");
+  assert.equal(result.description, undefined);
+  assert.equal(calls[1].params[1], calls[2].params[1]);
+});

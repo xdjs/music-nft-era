@@ -16,3 +16,11 @@ Public source is not a blanket license to reuse third-party photography, artwork
 Vercel account ownership is independent of GitHub ownership. No project transfer, Git connection, new deployment or production promotion was performed by this source-publication task.
 
 Tracking: https://github.com/xdjs/MusicNerdWeb/issues/1666
+
+## November 6 merge candidate
+
+Pete authorized moving the reviewed documentary work to main. The candidate adds the cinematic `/sequence/` draft, The Collection naming, nine LATASHÁ video records, original-video expansion/fullscreen, collaborator filtering, the accented artist display name, and a source-backed Spinamp section. Older source and Pete Rango's originator credit are retained. The dirty working folder was preserved; integration used a clean worktree based on the latest remote PR branch.
+
+Spinamp sources: founder interview published by Quicknode on July 5, 2024, and the project's ETHGlobal Metabolism developer brief. Its historical claims are attributed; current playback coverage is not inferred.
+
+The server's explicit static-file list and Vercel packaging now include the cinematic draft. CI runs both the shared experience and cinematic browser suites. Original media availability, Niqa Mor's unresolved Glass video, and the existing media-rights inventory remain open limitations. Main-source publication is separate from a Vercel deployment; this operation does not deploy or change the Lab listing.

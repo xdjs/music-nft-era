@@ -9,10 +9,11 @@
     "start": "node server.mjs",
     "test": "node --test tests/*.test.mjs scripts/*.test.mjs",
     "check": "node --check server.mjs && node --check src/app.js && node --check src/playlist.js && node --check src/data.js && node --check src/directory.js && node --check src/narrative.js && node --check src/portraits.js && node --check src/nft-reader.mjs && node --check src/nft-collections.mjs && node --check src/nft-catalog.js",
-    "ci": "npm run check && npm run format:check && npm test && npm run test:browser",
+    "ci": "npm run check && npm run format:check && npm test && npm run test:browser && npm run test:sequence",
     "test:browser": "playwright test",
     "format:check": "prettier --check index.html src server.mjs scripts tests playwright.config.js package.json .github",
-    "check:live": "node scripts/check-live.mjs"
+    "check:live": "node scripts/check-live.mjs",
+    "test:sequence": "playwright test --config prototype/playwright.config.js"
   },
   "engines": {
     "node": ">=22"

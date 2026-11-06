@@ -11,6 +11,15 @@ import { readDirectoryArtist } from "./src/directory.js";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 const files = new Map([
+  ["/sequence/documentary.js", "prototype/documentary.js"],
+  ["/sequence/library.js", "prototype/library.js"],
+  ["/sequence/", "prototype/sequence.html"],
+  ["/sequence/sequence.css", "prototype/sequence.css"],
+  ["/sequence/sequence.js", "prototype/sequence.js"],
+  ["/sequence/performance-frame.webp", "prototype/performance-frame.webp"],
+  ["/prototype/", "prototype/index.html"],
+  ["/prototype/prototype.css", "prototype/prototype.css"],
+  ["/prototype/prototype.js", "prototype/prototype.js"],
   ["/", "index.html"],
   ["/index.html", "index.html"],
   ["/src/app.js", "src/app.js"],
@@ -23,6 +32,7 @@ const files = new Map([
     "sound-import-v1-10",
     "sound-legacy-import",
     "park-import",
+    "video-import",
   ].map((name) => [`/src/${name}.js`, `src/${name}.js`]),
   ["/src/nft-catalog.js", "src/nft-catalog.js"],
   ["/src/data.js", "src/data.js"],
@@ -81,6 +91,10 @@ for (const [id, portrait] of Object.entries(portraits)) {
         `/people/${id}-${width}.webp`,
         `public/people/${id}-${width}.webp`,
       );
+}
+for (const record of nftCatalog) {
+  if (/^\/media\/video-latasha-\d+-480\.webp$/.test(record.localArtwork || ""))
+    files.set(record.localArtwork, `public${record.localArtwork}`);
 }
 const types = {
   webp: "image/webp",

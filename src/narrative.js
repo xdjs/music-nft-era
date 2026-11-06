@@ -915,7 +915,7 @@ eraMoments.push(
       artifact: "Watch the documentary and read the labeled transcript",
       artifactUrl: "https://www.pbs.org/video/minted-3tk5lb/",
       uncertainty:
-        "The film’s bid recollection does not establish the completed-sale timestamp. Joyride II’s exact token, final edition terms and sales outcome have not been independently resolved. No original-NFT player is claimed for these two videos.",
+        "The film’s bid recollection does not establish the completed-sale timestamp. The original tokens for ilikedat (Zora #623) and Joyride II: Showtime (0x75c8…38bD, #1) have been resolved to their video media. Final sale totals and production-cost recovery remain unverified.",
     },
     {
       id: "royalties",
@@ -937,3 +937,72 @@ eraMoments.push(
     },
   ].map(moment),
 );
+
+// Original-token provenance recovered during the music-video audit.
+eraSources.latashaIlikedatToken = {
+  title: "Ilikedat — original Zora token #623",
+  by: "LATASHÁ · original token metadata",
+  date: "Work dated 2017; token read 6 November 2026",
+  kind: "Primary release metadata",
+  url: "https://zora.co/collections/zora/623",
+  note: "Credits Ircasim as producer and Jahmel Reynolds as filmmaker. Media and metadata are separate contract reads; the video remains at its original IPFS address.",
+};
+eraSources.latashaCultureToken = {
+  title: "CULTURE — original Zora token #8233",
+  by: "LATASHÁ · original token metadata",
+  date: "Token read 6 November 2026",
+  kind: "Primary release metadata",
+  url: "https://zora.co/collections/zora/8233",
+  note: "Credits direction to Terrance Young; editing to LATASHÁ, Danilo Lima and Jamee Cornelia; photography to Angel Eustache; performance to LATASHÁ and Jah; production to Kaui.",
+};
+eraSources.latashaJoyrideToken = {
+  title: "JOYRIDE II: SHOWTIME — video edition",
+  by: "LATASHÁ · original Zora edition",
+  date: "September 2022 release; token read 6 November 2026",
+  kind: "Primary release metadata",
+  url: "https://market.zora.co/collections/0x75c8e01B4697A9b1346f8D5fA7492449d07738bD",
+  note: "Token #1 resolves to the video. This is a different contract from the MP3 edition. Sales totals and production-cost recovery are not inferred from the token metadata.",
+};
+const videoChapter = eraMoments.find((m) => m.id === "latasha-videos");
+videoChapter.sources.push(
+  "latashaIlikedatToken",
+  "latashaCultureToken",
+  "latashaJoyrideToken",
+);
+videoChapter.people.push("jamee-cornelia");
+videoChapter.body +=
+  "\n\nThe releases also preserve the people behind the camera. CULTURE, introduced as the first visual installment of Joyride, credits Terrance Young as director and LATASHÁ, Danilo Lima and Jamee Cornelia as editors. Cornelia appears elsewhere in this history as a musician; here she helped shape another artist’s film. Those credits make the collaboration visible beyond the name on the release.";
+
+eraSources.spinampInterview = {
+  title: "Spinamp founder interview",
+  by: "Aidan, Spinamp founder · interview published by Quicknode",
+  date: "5 July 2024",
+  kind: "Founder recollection",
+  url: "https://www.quicknode.com/blog/feature-fridays-spinamp",
+  note: "Describes starting a player in response to fragmented music discovery and later adding mobile collecting. Product claims are the founder’s account at publication, not a current service audit.",
+};
+eraSources.spinampTools = {
+  title: "Spinamp’s tools for building music experiences",
+  by: "Spinamp · ETHGlobal Metabolism sponsor page",
+  date: "Accessed 6 November 2026; event date not established here",
+  kind: "Project-issued developer brief",
+  url: "https://ethglobal.com/events/metabolism/prizes/spinamp",
+  note: "Documents the Spindexer and SDK, with proposals for cross-platform artist context, playlists and discovery applications. Proposed hackathon ideas are not treated as shipped features.",
+};
+eraMoments.push({
+  id: "spinamp",
+  date: "2022 onward / listening across platforms",
+  year: 2022,
+  type: "Listening tools",
+  title: "The music needed a player.",
+  short: "Spinamp: listening across releases",
+  deck: "Releasing music and making it easy to hear were different problems.",
+  body: "As releases spread across platforms, following an artist could mean following a trail of separate pages. Spinamp approached that fragmentation from the listener’s side: bring the music together so discovery and listening could become an everyday experience. In a July 2024 interview, founder Aidan recalled building it because he and his collaborators wanted a better way to hear what the scene was making. He described its development from a side-project player into a mobile app that also supported collecting.\n\nSpinamp also made tools for others to build with. Its ETHGlobal brief describes an indexer and SDK and invites experiments with playlists, discovery and cross-platform artist context. That matters to this history: a release did not have to be experienced only through the website where it was minted. Other builders could make another way into the music.",
+  people: [],
+  sources: ["spinampInterview", "spinampTools"],
+  related: ["catalog", "sound-genesis", "afterglow"],
+  artifact: "Explore Spinamp",
+  artifactUrl: "https://app.spinamp.xyz/",
+  uncertainty:
+    "The 2022 starting point is inferred from the founder’s July 2024 account of two years of development. Current support for individual releases has not been audited.",
+});

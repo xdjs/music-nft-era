@@ -5,8 +5,15 @@
     {
       "src": "api/index.mjs",
       "use": "@vercel/node",
-      "config": { "includeFiles": ["index.html", "src/**", "public/**"] }
+      "config": {
+        "includeFiles": ["index.html", "src/**", "public/**", "prototype/**"]
+      }
     }
   ],
-  "routes": [{ "src": "/(.*)", "dest": "/api/index.mjs" }]
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.mjs"
+    }
+  ]
 }

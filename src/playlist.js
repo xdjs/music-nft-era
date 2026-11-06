@@ -9,7 +9,10 @@ export function createPlaylist({ records, imageURL, beforePlay, escape }) {
   root.className = "collection-player";
   root.hidden = true;
   root.setAttribute("aria-label", "Collection player");
-  root.innerHTML = `<div class="player-expanded" hidden><div class="queue-heading"><h2>Up next</h2><span class="queue-count"></span><button data-action="expand" aria-label="Collapse queue">⌄</button></div><div class="playlist-screen"></div><ol class="playlist-queue"></ol></div><div class="player-dock"><img class="player-cover" alt=""><div class="player-track"><strong></strong><span></span><small role="status"></small></div><div class="player-controls"><button data-action="previous" aria-label="Previous recording">⏮</button><button data-action="toggle" class="player-toggle" aria-label="Pause collection">Ⅱ</button><button data-action="next" aria-label="Next recording">⏭</button><button data-action="shuffle" aria-label="Shuffle queue" aria-pressed="false">⇄</button><button data-action="expand" aria-label="Show queue" aria-expanded="false">Queue</button><button data-action="close" aria-label="Stop and close player">×</button></div><input class="playlist-seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek recording" disabled></div>`;
+  root.innerHTML = `<div class="player-expanded" hidden><div class="queue-heading"><h2>Up next</h2><span class="queue-count"></span><button data-action="fullscreen" hidden disabled aria-label="Watch video fullscreen">Full screen ⛶</button><button data-action="expand" aria-label="Collapse queue">⌄</button></div><div class="playlist-screen"></div><ol class="playlist-queue"></ol></div><div class="player-dock"><img class="player-cover" alt=""><div class="player-track"><strong></strong><span></span><small role="status"></small></div><div class="player-controls"><button data-action="previous" aria-label="Previous recording">⏮</button><button data-action="toggle" class="player-toggle" aria-label="Pause collection">Ⅱ</button><button data-action="next" aria-label="Next recording">⏭</button><button data-action="shuffle" aria-label="Shuffle queue" aria-pressed="false">⇄</button><button data-action="expand" aria-label="Show queue" aria-expanded="false">Queue</button><button data-action="close" aria-label="Stop and close player">×</button></div><input class="playlist-seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek recording" disabled></div>`;
+  root.querySelector(".player-cover").addEventListener("error", (event) => {
+    event.currentTarget.hidden = true;
+  });
   document.body.append(root);
   let order = [...records],
     index = 0,
@@ -85,10 +88,26 @@ export function createPlaylist({ records, imageURL, beforePlay, escape }) {
   const q = (selector) => root.querySelector(selector);
   const buttons = (action) =>
     root.querySelectorAll(`[data-action="${action}"]`);
+  function setExpanded(open) {
+    q(".player-expanded").hidden = !open;
+    const button = q('.player-controls [data-action="expand"]');
+    button.setAttribute("aria-expanded", String(open));
+    button.textContent = open
+      ? "Minimize"
+      : root.classList.contains("watching-video")
+        ? "Watch video"
+        : "Queue";
+    if (open) q(".player-expanded").scrollTop = 0;
+  }
   function status(text) {
     q('[role="status"]').textContent = text;
   }
   function toggleState() {
+    document.dispatchEvent(
+      new CustomEvent("collection-playback", {
+        detail: { id: order[index]?.id, playing: wanted },
+      }),
+    );
     const button = q('[data-action="toggle"]');
     button.textContent = wanted ? "Ⅱ" : "▶";
     button.setAttribute(
@@ -155,9 +174,16 @@ export function createPlaylist({ records, imageURL, beforePlay, escape }) {
     root.hidden = false;
     document.body.classList.add("has-collection-player");
     const record = order[index];
+    const wasVideo = root.classList.contains("watching-video");
+    const isVideo = record.kind === "video";
+    root.classList.toggle("watching-video", isVideo);
+    q(".queue-heading h2").textContent = isVideo ? "Now watching" : "Up next";
+    q('[data-action="fullscreen"]').hidden = !isVideo;
+    q('[data-action="fullscreen"]').disabled = true;
+    if (isVideo || wasVideo) setExpanded(isVideo);
     q(".player-track strong").textContent = record.title;
     q(".player-track > span").textContent = record.artist;
-    const cover = imageURL(record.imageURI);
+    const cover = imageURL(record.imageURI, record);
     q(".player-cover").hidden = !cover;
     if (cover) q(".player-cover").src = cover;
     status("Loading original recording…");
@@ -213,7 +239,9 @@ export function createPlaylist({ records, imageURL, beforePlay, escape }) {
         if (data.imageURL && record.kind === "video")
           media.poster = data.imageURL;
       }
+      if (record.kind === "video") media.controls = true;
       q(".playlist-screen").append(media);
+      q('[data-action="fullscreen"]').disabled = record.kind !== "video";
       recovery = createMediaRecovery(current, {
         originalURL: data.mediaURL,
         shouldPlay: () => wanted && request === generation,
@@ -234,9 +262,7 @@ export function createPlaylist({ records, imageURL, beforePlay, escape }) {
         clearTimeout(timer);
         failures = 0;
         prepareNext();
-        status(
-          record.kind === "video" ? "Video playing · open Queue to watch" : "",
-        );
+        status(record.kind === "video" ? "Video playing" : "");
       });
       q(".playlist-seek").disabled = !Number.isFinite(current.duration);
       media.addEventListener("loadedmetadata", () => {
@@ -317,11 +343,22 @@ export function createPlaylist({ records, imageURL, beforePlay, escape }) {
     if (action === "next" && index + 1 < order.length) playAt(index + 1);
     if (action === "previous" && index > 0) playAt(index - 1);
     if (action === "expand") {
-      const expanded = q(".player-expanded");
-      expanded.hidden = !expanded.hidden;
-      const button = q('.player-controls [data-action="expand"]');
-      button.setAttribute("aria-expanded", String(!expanded.hidden));
-      button.textContent = expanded.hidden ? "Queue" : "Hide queue";
+      setExpanded(q(".player-expanded").hidden);
+    }
+    if (action === "fullscreen" && media?.tagName === "VIDEO") {
+      if (media.requestFullscreen)
+        media
+          .requestFullscreen()
+          .catch(() =>
+            status(
+              "Fullscreen could not open. Use the video’s controls to try again.",
+            ),
+          );
+      else if (media.webkitEnterFullscreen) media.webkitEnterFullscreen();
+      else
+        status(
+          "Fullscreen is not available in this browser. The expanded video remains playable here.",
+        );
     }
     if (action === "shuffle") {
       shuffle = !shuffle;
@@ -356,6 +393,17 @@ export function createPlaylist({ records, imageURL, beforePlay, escape }) {
   return {
     pause,
     close,
+    play: (record) => {
+      if (!root.hidden && recordKey(order[index]) === recordKey(record)) {
+        toggle();
+        return;
+      }
+      order = [
+        record,
+        ...records.filter((r) => recordKey(r) !== recordKey(record)),
+      ];
+      playAt(0);
+    },
     enqueue: (record) => {
       if (root.hidden) {
         order = [record];
@@ -366,7 +414,7 @@ export function createPlaylist({ records, imageURL, beforePlay, escape }) {
         document.body.classList.add("has-collection-player");
         q(".player-track strong").textContent = record.title;
         q(".player-track > span").textContent = record.artist;
-        const cover = imageURL(record.imageURI);
+        const cover = imageURL(record.imageURI, record);
         q(".player-cover").hidden = !cover;
         if (cover) q(".player-cover").src = cover;
         toggleState();

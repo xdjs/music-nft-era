@@ -804,7 +804,8 @@ function momentView(m) {
   ${m.bridge ? `<p class="chapter-bridge">${esc(m.bridge)}</p>` : ""}<footer class="story-footer">${previous ? nextLink(previous, "← Previous stop", "quiet") : '<a class="quiet" href="#/">← Opening</a>'}${next ? nextLink(next, `<span>Next in the chapter</span><strong>${esc(momentById(next).short)} →</strong>`, "next-stop") : '<a class="next-stop" href="#/explore"><span>The chapter continues through you</span><strong>Find someone to hear next →</strong></a>'}</footer></div></article>`;
 }
 
-function nftImage(uri) {
+function nftImage(uri, record) {
+  if (record?.localArtwork) return record.localArtwork;
   if (!uri || uri.startsWith("data:")) return "";
   if (uri.startsWith("ipfs://"))
     return "https://ipfs.filebase.io/ipfs/" + uri.slice(7);
@@ -835,16 +836,18 @@ function nftCard(record, compact = false) {
     "record-xcelencia-isla",
     "record-xcelencia-soltera",
   ];
-  const image = cachedArtwork.includes(record.id)
-    ? `/media/${record.id}-960.webp`
-    : record.id === "record-a76cb910"
-      ? "/media/tk-never-forget-960.webp"
-      : record.id === "record-chaos-walls"
-        ? "/media/chaos-walls-960.webp"
-        : record.id === "catalog-eprom-1715"
-          ? "/media/catalog-eprom-960.webp"
-          : nftImage(record.imageURI);
-  return `<article class="nft-card"><div class="record-artwork">${image ? `<img src="${esc(image)}" alt="${esc(record.title)} — artwork from token metadata" ${cachedArtwork.includes(record.id) ? `srcset="/media/${record.id}-480.webp 480w, /media/${record.id}-960.webp 960w" sizes="${compact ? "110px" : "(max-width: 700px) 90vw, 30vw"}"` : ""} loading="lazy" decoding="async">` : '<div class="nft-film-label">An audiovisual work</div>'}<button class="artwork-play" data-nft="${record.id}" aria-label="Play ${esc(record.title)}" aria-pressed="false"><span aria-hidden="true">▶</span></button></div><div><p class="small-label">${esc(record.artist)}</p><h3>${esc(record.title)}</h3>${compact ? "" : `<p>${esc(record.note)}</p>`}${record.credits?.length ? `<ul class="record-credits">${record.credits.map((credit) => `<li><a href="${detailHref("person", credit.personId)}">${esc(personById(credit.personId).name)}</a><span>${esc(credit.role)}</span></li>`).join("")}</ul>` : ""}<button class="queue-add" data-queue="${record.id}" aria-label="Add ${esc(record.title)} to queue">＋ Add to queue</button><details><summary>The edition & collection</summary><p>${chainName(record.chainId)} · Token ${esc(record.tokenId)}</p><a href="https://${explorer(record.chainId)}/token/${record.contract}?a=${record.tokenId}" target="_blank" rel="noopener noreferrer">Inspect this edition ↗</a><a href="#/collection/${record.id}">Explore this collection here ↗</a>${record.originalRelease ? `<a href="${esc(record.originalRelease)}" target="_blank" rel="noopener noreferrer">Original release page (may be offline) ↗</a>` : ""}<p>Artist credit follows token metadata and the linked release. This selection is not the artist’s complete catalogue.</p></details></div></article>`;
+  const image =
+    record.localArtwork ||
+    (cachedArtwork.includes(record.id)
+      ? `/media/${record.id}-960.webp`
+      : record.id === "record-a76cb910"
+        ? "/media/tk-never-forget-960.webp"
+        : record.id === "record-chaos-walls"
+          ? "/media/chaos-walls-960.webp"
+          : record.id === "catalog-eprom-1715"
+            ? "/media/catalog-eprom-960.webp"
+            : nftImage(record.imageURI));
+  return `<article class="nft-card"><div class="record-artwork">${image ? `<img src="${esc(image)}" alt="${esc(record.title)} — ${record.localArtwork ? "frame from original NFT video" : "artwork from token metadata"}" ${cachedArtwork.includes(record.id) ? `srcset="/media/${record.id}-480.webp 480w, /media/${record.id}-960.webp 960w" sizes="${compact ? "110px" : "(max-width: 700px) 90vw, 30vw"}"` : ""} loading="lazy" decoding="async">` : '<div class="nft-film-label">An audiovisual work</div>'}<button class="artwork-play" data-nft="${record.id}" aria-label="Play ${esc(record.title)}" aria-pressed="false"><span aria-hidden="true">▶</span></button></div><div><p class="small-label">${esc(record.artist)}</p><h3>${esc(record.title)}</h3>${compact ? "" : `<p>${esc(record.note)}</p>`}${record.credits?.length ? `<ul class="record-credits">${record.credits.map((credit) => `<li><a href="${detailHref("person", credit.personId)}">${esc(personById(credit.personId).name)}</a><span>${esc(credit.role)}</span></li>`).join("")}</ul>` : ""}<button class="queue-add" data-queue="${record.id}" aria-label="Add ${esc(record.title)} to queue">＋ Add to queue</button><details><summary>The edition & collection</summary><p>${chainName(record.chainId)} · Token ${esc(record.tokenId)}</p><a href="https://${explorer(record.chainId)}/token/${record.contract}?a=${record.tokenId}" target="_blank" rel="noopener noreferrer">Inspect this edition ↗</a><a href="#/collection/${record.id}">Explore this collection here ↗</a>${record.originalRelease ? `<a href="${esc(record.originalRelease)}" target="_blank" rel="noopener noreferrer">Original release page (may be offline) ↗</a>` : ""}<p>Artist credit follows token metadata and the linked release. This selection is not the artist’s complete catalogue.</p></details></div></article>`;
 }
 function recordingSelection() {
   const p = params();
@@ -891,7 +894,7 @@ function recordsView() {
     [...new Set(nftCatalog.map((r) => r[key]).filter(Boolean))]
       .sort()
       .map((v) => [v, v]);
-  return `<section class="records-page"><a href="#/">← Return to the documentary</a><p class="small-label">The recordings behind the story</p><h1>Put the record on.</h1><p class="deck">Songs, music videos, performances and experiments. Play the original NFT media from the artwork.</p><label for="record-search">Find an artist, song or credit</label><input id="record-search" type="search" value="${esc(params().get("q") || "")}" placeholder="Try Songcamp, Heno., a collaborator…"><div class="record-filters">${recordFilter(
+  return `<section class="records-page"><a href="#/">← Return to the documentary</a><p class="small-label">The recordings behind the story</p><h1>The Collection</h1><p class="deck">Songs, music videos, performances and experiments. Play the original NFT media from the artwork.</p><label for="record-search">Find an artist, song or credit</label><input id="record-search" type="search" value="${esc(params().get("q") || "")}" placeholder="Try Songcamp, Heno., a collaborator…"><div class="record-filters">${recordFilter(
     "artist",
     "Artists",
     [
@@ -950,7 +953,7 @@ function updateRecordingFilters() {
 function collectionView(id) {
   const record = nftCatalog.find((r) => r.id === id);
   if (!record)
-    return '<section class="records-page"><h1>Collection not found.</h1><a href="#/records">Return to recordings</a></section>';
+    return '<section class="records-page"><h1>Collection not found.</h1><a href="#/records">Return to the collection</a></section>';
   return `<section class="records-page"><a href="#/records?q=${encodeURIComponent(record.artist)}">← Artist’s selected collections</a><p class="small-label">${esc(record.artist)} / ${chainName(record.chainId)} collection</p><h1>${esc(record.collection || record.title)}</h1><p class="deck">Explore editions from this contract. The index finds the tokens; each player separately reads its metadata from its original chain.</p><p>This contract may contain multiple releases or editions. Shared protocol contracts can also include other artists and non-music works; this is not an artist or platform’s complete discography.</p><button class="button primary" data-nft="${record.id}">▶ Play the featured edition</button><p id="collection-status" role="status">Loading the collection index…</p><div id="collection-items" class="nft-grid"></div><button id="collection-more" class="button secondary" hidden>Load more editions</button></section>`;
 }
 let collectionController;

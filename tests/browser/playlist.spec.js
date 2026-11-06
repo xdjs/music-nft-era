@@ -62,7 +62,7 @@ test("collection queue persists through navigation and supports playback, skip, 
   await page
     .getByRole("button", { name: "Collapse queue", exact: true })
     .click();
-  await page.getByRole("link", { name: "Recordings", exact: true }).click();
+  await page.getByRole("link", { name: "The Collection", exact: true }).click();
   await expect(player).toBeVisible();
   await page
     .getByRole("button", { name: "Next recording", exact: true })

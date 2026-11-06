@@ -1073,6 +1073,15 @@ for (const record of nftCatalog) {
   };
   const names = record.artist.split(/\s*[·,&]\s*/).filter(Boolean);
   record.personIds = [];
+  for (const credit of record.credits || []) {
+    const contributor = people.find((person) => person.id === credit.personId);
+    if (!contributor) continue;
+    record.personIds.push(contributor.id);
+    contributor.recordIds = [
+      ...new Set([...(contributor.recordIds || []), record.id]),
+    ];
+    contributor.sources = [...new Set([...contributor.sources, sid])];
+  }
   for (const name of names) {
     let person = canonical(name);
     if (!person) {

@@ -4,7 +4,10 @@ export default defineConfig({
   fullyParallel: true,
   workers: 2,
   timeout: 30000,
-  use: { baseURL: "http://127.0.0.1:4178", trace: "retain-on-failure" },
+  use: {
+    baseURL: `http://127.0.0.1:${process.env.PROTOTYPE_PORT || 4178}`,
+    trace: "retain-on-failure",
+  },
   projects: [
     { name: "desktop", use: { viewport: { width: 1440, height: 1000 } } },
     {
@@ -17,8 +20,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "npm start",
-    url: "http://127.0.0.1:4178",
+    command: `PORT=${process.env.PROTOTYPE_PORT || 4178} npm start`,
+    url: `http://127.0.0.1:${process.env.PROTOTYPE_PORT || 4178}`,
     reuseExistingServer: true,
   },
 });
