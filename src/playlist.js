@@ -197,18 +197,11 @@ export function createPlaylist({ records, imageURL, beforePlay, escape }) {
       clearTimeout(timer);
       media?.pause();
       failures++;
-      if (wanted && index + 1 < order.length && failures < 3) {
-        status("Recording unavailable. Moving to the next…");
-        transition = setTimeout(() => {
-          if (request === generation && wanted) playAt(index + 1, true);
-        }, 1500);
-      } else {
-        wanted = false;
-        toggleState();
-        status(
-          "Playback stopped: this recording is unavailable. Try play again or choose another.",
-        );
-      }
+      wanted = false;
+      toggleState();
+      status(
+        "Playback stopped: this recording could not load. Press play to retry, or skip when you’re ready.",
+      );
     };
     timer = setTimeout(() => {
       controller.abort();
@@ -255,7 +248,7 @@ export function createPlaylist({ records, imageURL, beforePlay, escape }) {
         clearTimeout(timer);
         timer = setTimeout(() => {
           if (request === generation && wanted) recovery.recover(current.src);
-        }, 20000);
+        }, 8000);
       });
       media.addEventListener("playing", () => {
         if (request !== generation) return;

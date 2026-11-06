@@ -5,7 +5,7 @@ test("deeper chapters retain the documentary position and resolve evidence", asy
 }, info) => {
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto("/");
+  await page.goto("/legacy/");
   for (const id of [
     "future-surf",
     "eternal-garden",
@@ -62,14 +62,14 @@ test("deeper chapters retain the documentary position and resolve evidence", asy
 test("artist alias search preserves historical recording credits", async ({
   page,
 }) => {
-  await page.goto("/#/records?q=Lackhoney");
+  await page.goto("/legacy/#/records?q=Lackhoney");
   await expect(
     page.locator(".nft-card").filter({ hasText: "MIAMI FREESTYLE" }),
   ).toHaveCount(1);
   await expect(
     page.locator(".nft-card").filter({ hasText: "MIAMI FREESTYLE" }),
   ).toContainText("Aly");
-  await page.goto("/#/explore?view=people&q=Aly");
+  await page.goto("/legacy/#/explore?view=people&q=Aly");
   // Directory search has its own input; use it to exercise live filtering.
   const search = page.locator('input[type="search"]');
   await search.fill("Aly");
@@ -81,7 +81,7 @@ test("artist alias search preserves historical recording credits", async ({
 test("The Park chapter connects its explanation to playable records and the wider archive", async ({
   page,
 }) => {
-  await page.goto("/#/moment/the-park");
+  await page.goto("/legacy/#/moment/the-park");
   await expect(
     page.getByRole("heading", { name: "A scene needs a place to return." }),
   ).toBeVisible();
