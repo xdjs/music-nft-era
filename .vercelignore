@@ -1,0 +1,14 @@
+node_modules
+.git
+.firecrawl
+.vercel
+captures
+work
+data
+docs
+tests
+test-results
+playwright-report
+AGENT-PROMPT.md
+*.log
+.env*
