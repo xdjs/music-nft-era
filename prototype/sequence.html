@@ -21,7 +21,7 @@
     <title>The Web3 Music Era — Music Nerd</title>
     <link rel="stylesheet" href="/sequence/sequence.css" />
   </head>
-  <body class="cinematic">
+  <body class="cinematic in-history">
     <a class="skip" href="#film">Skip to story</a>
     <header class="mast">
       <a href="#history-start" class="brand">music nerd</a
@@ -32,187 +32,216 @@
       </button>
     </header>
     <main id="film">
-      <div class="stage" aria-label="Artifacts and collaborators">
-        <div class="atmosphere"></div>
-        <figure class="performance">
-          <div class="performance-screen">
-            <video
-              id="performance"
-              muted
-              playsinline
-              loop
-              preload="none"
-              poster="/sequence/performance-frame.webp"
-              aria-label="Iman Europe performing MWWM at Zoratopia FETE, Miami"
-            ></video>
-            <div class="film-vignette"></div>
-          </div>
-          <figcaption>
-            Iman Europe · MWWM
-            <span>Zoratopia FETE, Miami · December 3, 2022</span>
-          </figcaption>
-          <button
-            class="artifact-info"
-            data-note="performance"
-            aria-label="Read the performance’s original NFT provenance"
-          >
-            ↗
-          </button>
-        </figure>
-        <figure class="sleeve">
-          <img
-            src="/media/record-69c77ef0-960.webp"
-            alt="Original MIAMI FREESTYLE release artwork"
-            width="960"
-            height="960"
-          /><button
-            class="record-play"
-            id="play-record"
-            aria-label="Play Miami Freestyle"
-          >
-            ▶
-          </button>
-          <figcaption>
-            MIAMI FREESTYLE <span>CAMPFIRE · 2023 release</span>
-          </figcaption>
-        </figure>
-        <div class="credit-thread" aria-hidden="true"></div>
-        <div class="people">
-          <button data-person="lackhoney">
-            <img src="/people/lackhoney-640.webp" alt="Lackhoney" /><span
-              >Lackhoney<small
-                >Credited as Aly · featured performer</small
-              ></span
-            ></button
-          ><button data-person="tk">
-            <img src="/people/tk-640.webp" alt="TK" /><span
-              >TK<small>Featured performer & artwork</small></span
-            ></button
-          ><button data-person="pete-rango">
-            <img src="/people/pete-rango-640.webp" alt="Pete Rango" /><span
-              >Pete Rango<small>Mixing & mastering</small></span
-            >
-          </button>
-        </div>
-        <div class="release-note">
-          <span>From the original release</span>
-          <h3>The work around the song.</h3>
-          <dl>
-            <dt>Featured performers</dt>
-            <dd>Aly, Tarot, Elle Symone, Early & TK</dd>
-            <dt>Production</dt>
-            <dd>AbJo</dd>
-            <dt>Mixing & mastering</dt>
-            <dd>Pete Rango</dd>
-            <dt>Artwork</dt>
-            <dd>Karey & TK</dd>
-          </dl>
-          <button data-note="release">Open the release notes ↗</button>
-        </div>
-      </div>
-      <div class="story">
-        <section class="beat entry" id="beat-0" data-scene="0">
-          <div class="copy">
-            <p class="kicker">Miami · December 3, 2022</p>
-            <h2>Iman Europe.<br />Live in Miami.</h2>
+      <div id="documentary">
+        <section class="doc-opening cinema-intro" id="history-start">
+          <figure class="intro-world">
+            <img
+              src="/media/chaos-walls-1500.webp"
+              alt="Original artwork for Walls, from Songcamp’s CHAOS"
+            />
+            <figcaption>Walls · Songcamp / CHAOS, 2022</figcaption>
+          </figure>
+          <div class="opening-copy">
+            <p class="kicker">Music Nerd presents</p>
+            <h1>The Web3<br />Music Era.</h1>
             <p>
-              Here is one of those gatherings, seen through a recording released
-              by the scene itself. Iman Europe performs MWWM at Zoratopia FETE
-              on December 3, 2022. The video is both a performance we can watch
-              and a collectible artifact of the event.
+              Artists were rethinking how music could be released, supported and
+              made together.
             </p>
-            <button class="inline-link" data-library-start>
-              ▶ Listen while you explore
-            </button>
-            <button class="inline-link" data-note="performance">
-              About this performance ＋
-            </button>
-          </div>
-          <a class="scroll-cue" href="#beat-1"
-            >Follow the recording <span>↓</span></a
-          >
-        </section>
-        <section class="beat left" id="beat-1" data-scene="1">
-          <div class="copy">
-            <p class="kicker">MWWM / a filmed performance</p>
-            <h2>You can collect<br />this performance.</h2>
-            <p>
-              The footage was released as a video NFT. The token links to the
-              original recording playing here.
-            </p>
-            <p>
-              Listeners can watch the film without owning an edition. Collecting
-              the token adds an ownership record; it does not automatically
-              transfer the film’s copyright.
-            </p>
-            <button class="inline-link" data-note="performance">
-              Inspect this edition ＋
-            </button>
-          </div>
-        </section>
-        <section class="beat left" id="beat-2" data-scene="2">
-          <div class="copy">
-            <p class="kicker">CAMPFIRE / a separate Miami gathering</p>
-            <h2>They came<br />to make music.</h2>
-            <p>
-              CAMPFIRE’s first Art Basel artist camp brought musicians together
-              in Miami. Its 2023 genesis release, <i>MIAMI FREESTYLE</i>, names
-              the people who turned that gathering into a recording.
-            </p>
-            <p>Press play on the artwork to hear what they made.</p>
-            <button class="inline-link" data-note="release">
-              Read the release notes ＋
-            </button>
-          </div>
-        </section>
-        <section class="beat lower" id="beat-3" data-scene="3">
-          <div class="copy">
-            <p class="kicker">MIAMI FREESTYLE / selected collaborators</p>
-            <h2>The voices are only<br />part of the credits.</h2>
-            <p>
-              Aly, Tarot, Elle Symone, Early and TK are the featured performers.
-              AbJo produced the track; Pete Rango mixed and mastered it. Karey
-              and TK made the artwork. Select a collaborator to learn more.
-            </p>
-          </div>
-        </section>
-        <section class="beat left" id="beat-4" data-scene="4">
-          <div class="copy">
-            <p class="kicker">CAMPFIRE’s first season</p>
-            <h2>The community<br />helped choose<br />the releases.</h2>
-            <p>
-              CAMPFIRE described its first season as songs selected by community
-              vote.
-            </p>
-            <p>
-              That gave supporters a role before a release reached a collector:
-              helping decide which work the project would put out.
-            </p>
-            <button class="inline-link" data-note="release">
-              Read CAMPFIRE’s account ＋
-            </button>
-          </div>
-        </section>
-        <section class="beat ending" id="beat-5" data-scene="5">
-          <div class="copy">
-            <p class="kicker">Into 2023 / beyond the gathering</p>
-            <h2>What kept people<br />coming back?</h2>
-            <p>
-              CAMPFIRE’s credits show what one gathering produced. Keeping a
-              scene going also took less visible work: feedback, teaching and
-              regular conversations. Future Surf’s 2023 schedule gives us a
-              glimpse of that week-to-week life.
-            </p>
-            <a class="pill" href="#history-future-surf"
-              >Continue the documentary ↓</a
-            ><button id="replay" class="inline-link">
-              Watch Iman’s performance again ↑</button
-            ><small class="study-note"
-              >This short sequence is one part of the broader history.</small
+            <a class="scroll-cue" href="#why-this-mattered"
+              >Scroll into the story ↓</a
+            ><small
+              >2015 roots · 2021–2023 core · an unfinished aftermath</small
             >
           </div>
         </section>
       </div>
+      <template id="gathering-template">
+        <div class="stage" aria-label="Artifacts and collaborators">
+          <div class="atmosphere"></div>
+          <figure class="performance">
+            <div class="performance-screen">
+              <video
+                id="performance"
+                muted
+                playsinline
+                loop
+                preload="none"
+                poster="/sequence/performance-frame.webp"
+                aria-label="Iman Europe performing MWWM at Zoratopia FETE, Miami"
+              ></video>
+              <div class="film-vignette"></div>
+            </div>
+            <figcaption>
+              Iman Europe · MWWM
+              <span>Zoratopia FETE, Miami · December 3, 2022</span>
+            </figcaption>
+            <button
+              class="artifact-info"
+              data-note="performance"
+              aria-label="Read the performance’s original NFT provenance"
+            >
+              ↗
+            </button>
+          </figure>
+          <figure class="sleeve">
+            <img
+              src="/media/record-69c77ef0-960.webp"
+              alt="Original MIAMI FREESTYLE release artwork"
+              width="960"
+              height="960"
+            /><button
+              class="record-play"
+              id="play-record"
+              aria-label="Play Miami Freestyle"
+            >
+              ▶
+            </button>
+            <figcaption>
+              MIAMI FREESTYLE <span>CAMPFIRE · 2023 release</span>
+            </figcaption>
+          </figure>
+          <div class="credit-thread" aria-hidden="true"></div>
+          <div class="people">
+            <button data-person="lackhoney">
+              <img src="/people/lackhoney-640.webp" alt="Lackhoney" /><span
+                >Lackhoney<small
+                  >Credited as Aly · featured performer</small
+                ></span
+              ></button
+            ><button data-person="tk">
+              <img src="/people/tk-640.webp" alt="TK" /><span
+                >TK<small>Featured performer & artwork</small></span
+              ></button
+            ><button data-person="pete-rango">
+              <img src="/people/pete-rango-640.webp" alt="Pete Rango" /><span
+                >Pete Rango<small>Mixing & mastering</small></span
+              >
+            </button>
+          </div>
+          <div class="release-note">
+            <span>From the original release</span>
+            <h3>The work around the song.</h3>
+            <dl>
+              <dt>Featured performers</dt>
+              <dd>Aly, Tarot, Elle Symone, Early & TK</dd>
+              <dt>Production</dt>
+              <dd>AbJo</dd>
+              <dt>Mixing & mastering</dt>
+              <dd>Pete Rango</dd>
+              <dt>Artwork</dt>
+              <dd>Karey & TK</dd>
+            </dl>
+            <button data-note="release">Open the release notes ↗</button>
+          </div>
+        </div>
+        <div class="story">
+          <section class="beat entry" id="beat-0" data-scene="0">
+            <div class="copy">
+              <p class="kicker">Miami · December 3, 2022</p>
+              <h2>Iman Europe.<br />Live in Miami.</h2>
+              <p>
+                Here is one of those gatherings, seen through a recording
+                released by the scene itself. Iman Europe performs MWWM at
+                Zoratopia FETE on December 3, 2022. The video is both a
+                performance we can watch and a collectible artifact of the
+                event.
+              </p>
+              <button class="inline-link" data-library-start>
+                ▶ Listen while you explore
+              </button>
+              <button class="inline-link" data-note="performance">
+                About this performance ＋
+              </button>
+            </div>
+            <a class="scroll-cue" href="#beat-1"
+              >Follow the recording <span>↓</span></a
+            >
+          </section>
+          <section class="beat left" id="beat-1" data-scene="1">
+            <div class="copy">
+              <p class="kicker">MWWM / a filmed performance</p>
+              <h2>You can collect<br />this performance.</h2>
+              <p>
+                The footage was released as a video NFT. The token links to the
+                original recording playing here.
+              </p>
+              <p>
+                Listeners can watch the film without owning an edition.
+                Collecting the token adds an ownership record; it does not
+                automatically transfer the film’s copyright.
+              </p>
+              <button class="inline-link" data-note="performance">
+                Inspect this edition ＋
+              </button>
+            </div>
+          </section>
+          <section class="beat left" id="beat-2" data-scene="2">
+            <div class="copy">
+              <p class="kicker">CAMPFIRE / a separate Miami gathering</p>
+              <h2>They came<br />to make music.</h2>
+              <p>
+                CAMPFIRE’s first Art Basel artist camp brought musicians
+                together in Miami. Its 2023 genesis release,
+                <i>MIAMI FREESTYLE</i>, names the people who turned that
+                gathering into a recording.
+              </p>
+              <p>Press play on the artwork to hear what they made.</p>
+              <button class="inline-link" data-note="release">
+                Read the release notes ＋
+              </button>
+            </div>
+          </section>
+          <section class="beat lower" id="beat-3" data-scene="3">
+            <div class="copy">
+              <p class="kicker">MIAMI FREESTYLE / selected collaborators</p>
+              <h2>The voices are only<br />part of the credits.</h2>
+              <p>
+                Aly, Tarot, Elle Symone, Early and TK are the featured
+                performers. AbJo produced the track; Pete Rango mixed and
+                mastered it. Karey and TK made the artwork. Select a
+                collaborator to learn more.
+              </p>
+            </div>
+          </section>
+          <section class="beat left" id="beat-4" data-scene="4">
+            <div class="copy">
+              <p class="kicker">CAMPFIRE’s first season</p>
+              <h2>The community<br />helped choose<br />the releases.</h2>
+              <p>
+                CAMPFIRE described its first season as songs selected by
+                community vote.
+              </p>
+              <p>
+                That gave supporters a role before a release reached a
+                collector: helping decide which work the project would put out.
+              </p>
+              <button class="inline-link" data-note="release">
+                Read CAMPFIRE’s account ＋
+              </button>
+            </div>
+          </section>
+          <section class="beat ending" id="beat-5" data-scene="5">
+            <div class="copy">
+              <p class="kicker">Into 2023 / beyond the gathering</p>
+              <h2>What kept people<br />coming back?</h2>
+              <p>
+                CAMPFIRE’s credits show what one gathering produced. Keeping a
+                scene going also took less visible work: feedback, teaching and
+                regular conversations. Future Surf’s 2023 schedule gives us a
+                glimpse of that week-to-week life.
+              </p>
+              <a class="pill" href="#history-future-surf"
+                >Continue the documentary ↓</a
+              ><button id="replay" class="inline-link">
+                Watch Iman’s performance again ↑</button
+              ><small class="study-note"
+                >This short sequence is one part of the broader history.</small
+              >
+            </div>
+          </section>
+        </div>
+      </template>
     </main>
     <section id="music-library" hidden aria-labelledby="music-title"></section>
     <footer class="transport">
@@ -230,7 +259,7 @@
         ><button id="motion" aria-pressed="false">Reduce motion</button>
       </div>
       <div class="scene-meter">
-        <span id="scene-count">01 / 06</span>
+        <span id="scene-count">The history</span>
         <div class="meter"><i></i></div>
       </div>
       <p id="status" role="status"></p>

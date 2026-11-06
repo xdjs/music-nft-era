@@ -418,3 +418,33 @@ test("homepage is the documentary and the old draft address redirects", async ({
     page.locator('#history-afterglow img[src*="rae-isla-live"]').first(),
   ).toBeVisible();
 });
+
+test("the correct opening is visible before documentary JavaScript loads", async ({
+  page,
+}) => {
+  let resume;
+  const waiting = new Promise((resolve) => {
+    resume = resolve;
+  });
+  await page.route("**/sequence/sequence.js", async (route) => {
+    await waiting;
+    await route.continue();
+  });
+  await page.goto("/", { waitUntil: "commit" });
+  try {
+    await expect(page.locator("#history-start h1")).toHaveText(
+      "The Web3Music Era.",
+    );
+    await expect(page.locator("#history-start")).toBeVisible();
+    await expect(page.locator(".stage")).toHaveCount(0);
+    await expect(page.locator("#beat-0")).toHaveCount(0);
+    await page.screenshot({
+      path: `/tmp/first-paint-${test.info().project.name}.png`,
+    });
+  } finally {
+    resume();
+  }
+  await expect(page.locator("#gathering-sequence #beat-0")).toHaveCount(1);
+  await expect(page.locator("#history-start")).toHaveCount(1);
+  expect(await page.evaluate(() => scrollY)).toBe(0);
+});

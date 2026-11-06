@@ -429,78 +429,79 @@ export function contextHTML(hash) {
   return null;
 }
 export function buildDocumentary() {
-  const root = document.createElement("div");
-  root.id = "documentary";
-  root.innerHTML =
-    `<section class="doc-opening cinema-intro" id="history-start">
-      <figure class="intro-world"><img src="/media/chaos-walls-1500.webp" alt="Original artwork for Walls, from Songcamp’s CHAOS"><figcaption>Walls · Songcamp / CHAOS, 2022</figcaption></figure>
-      <div class="opening-copy"><p class="kicker">Music Nerd presents</p><h1>The Web3<br>Music Era.</h1><p>Artists were rethinking how music could be released, supported and made together.</p><a class="scroll-cue" href="#why-this-mattered">Scroll into the story ↓</a><small>2015 roots · 2021–2023 core · an unfinished aftermath</small></div>
-    </section>
-    <section class="cinema-intro stakes-scene" id="why-this-mattered"><figure class="intro-world"><img src="/media/latasha-press-1500.webp" alt="LATASHÁ, 2016 press portrait"><figcaption>LATASHÁ · press portrait, 2016</figcaption></figure><div class="scene-copy"><p class="kicker">The problem before the token</p><h2>Making the work.<br>On whose terms?</h2><p>${linked("LATASHÁ wanted to make videos without becoming the performer labels wanted her to be. She recalls paying for independent production with unemployment checks. Reaching an audience was one problem. Being able to keep making her work was another.")}</p><p>Other musicians were asking their own versions of that question. Could support come more directly from the people who cared about the music?</p><a class="chapter-deeper" href="#chapter-latasha-videos">Her account ＋</a><a class="inline-link" href="#chapter-early-records">Why others looked for alternatives</a></div></section>
+  const root = document.querySelector("#documentary");
+  root.insertAdjacentHTML(
+    "beforeend",
+    `<section class="cinema-intro stakes-scene" id="why-this-mattered"><figure class="intro-world"><img src="/media/latasha-press-1500.webp" alt="LATASHÁ, 2016 press portrait"><figcaption>LATASHÁ · press portrait, 2016</figcaption></figure><div class="scene-copy"><p class="kicker">The problem before the token</p><h2>Making the work.<br>On whose terms?</h2><p>${linked("LATASHÁ wanted to make videos without becoming the performer labels wanted her to be. She recalls paying for independent production with unemployment checks. Reaching an audience was one problem. Being able to keep making her work was another.")}</p><p>Other musicians were asking their own versions of that question. Could support come more directly from the people who cared about the music?</p><a class="chapter-deeper" href="#chapter-latasha-videos">Her account ＋</a><a class="inline-link" href="#chapter-early-records">Why others looked for alternatives</a></div></section>
     <section class="cinema-intro token-explainer" id="understanding-nfts"><figure class="intro-world"><img src="/media/video-latasha-623-1500.webp" alt="Frame from LATASHÁ’s ilikedat video" width="1500" height="844"><button class="doc-play" data-library-play="latasha-zora-623" aria-label="Watch ilikedat">▶</button><figcaption>LATASHÁ · ilikedat · original video frame<br>Watch the work. No token needed.</figcaption></figure><div class="scene-copy"><p class="kicker">A new way to collect music</p><h2>The song could be copied.<br>The edition had a history.</h2><p><strong>Non-fungible</strong> means individually identifiable, not interchangeable like-for-like. A <strong>token</strong> is a digital representation. Here, it is associated with a piece of music.</p><p>A blockchain records who holds that token and when it changes hands. Anyone can still hear the song. Buying its edition does not automatically buy its copyright.</p><a class="chapter-deeper" href="#concept-nft">What could owning an edition mean? ＋</a></div></section>` +
-    chapters
-      .map((c, i) => {
-        let copy = c.moment.body.split("\n\n")[0];
-        if (c.id === "tiny-human")
-          copy =
-            "Imogen Heap wanted a song to carry more of its makers with it: musicians, artwork, permissions and the paths by which it could be used. In 2015, she and Ujo tested part of that idea with Tiny Human on Ethereum. A listener could choose a licence and payments could flow to contributors. This was a blockchain licensing experiment, before the collectible editions explored here. Ujo closed the prototype in 2016 to concentrate on its next platform. The ambition and the difficulty were already present: a different system was imaginable, but somebody had to keep it working.";
-        if (c.id === "tape")
-          copy +=
-            " $TAPE used fungible, redeemable tokens—not the unique editions that later became central to music NFTs. The connection is the people and the question they were testing: could artists and builders design the terms of a release together?";
-        if (c.id === "genesis")
-          copy =
-            "Songcamp put the act of making music at the center of the experiment. Founded by Matthew Chaim, it brought nine musicians into three bands for Camp Genesis in April 2021, alongside two visual artists and two operators. The group made songs and built the release around them. Artists were not only supplying recordings to a platform; they were helping construct the project that would release them. Camp Elektra followed that summer, adding a story and game around the songs. In 2022, CHAOS would expand that shared work dramatically.";
-        if (c.id === "afterglow")
-          copy +=
-            " Spinamp addressed another part of that problem: hearing music scattered across different release platforms. Its player and developer tools showed how another team could build a new listening experience around those releases.";
-        if (c.id === "royalties")
-          copy +=
-            " A token can specify a resale royalty without making every marketplace pay it. The arrangement depended on technical choices and on platforms honoring it. Payment splits, resale royalties and ownership of music rights are different things; an edition did not automatically confer all three.";
+      chapters
+        .map((c, i) => {
+          let copy = c.moment.body.split("\n\n")[0];
+          if (c.id === "tiny-human")
+            copy =
+              "Imogen Heap wanted a song to carry more of its makers with it: musicians, artwork, permissions and the paths by which it could be used. In 2015, she and Ujo tested part of that idea with Tiny Human on Ethereum. A listener could choose a licence and payments could flow to contributors. This was a blockchain licensing experiment, before the collectible editions explored here. Ujo closed the prototype in 2016 to concentrate on its next platform. The ambition and the difficulty were already present: a different system was imaginable, but somebody had to keep it working.";
+          if (c.id === "tape")
+            copy +=
+              " $TAPE used fungible, redeemable tokens—not the unique editions that later became central to music NFTs. The connection is the people and the question they were testing: could artists and builders design the terms of a release together?";
+          if (c.id === "genesis")
+            copy =
+              "Songcamp put the act of making music at the center of the experiment. Founded by Matthew Chaim, it brought nine musicians into three bands for Camp Genesis in April 2021, alongside two visual artists and two operators. The group made songs and built the release around them. Artists were not only supplying recordings to a platform; they were helping construct the project that would release them. Camp Elektra followed that summer, adding a story and game around the songs. In 2022, CHAOS would expand that shared work dramatically.";
+          if (c.id === "afterglow")
+            copy +=
+              " Spinamp addressed another part of that problem: hearing music scattered across different release platforms. Its player and developer tools showed how another team could build a new listening experience around those releases.";
+          if (c.id === "royalties")
+            copy +=
+              " A token can specify a resale royalty without making every marketplace pay it. The arrangement depended on technical choices and on platforms honoring it. Payment splits, resale royalties and ownership of music rights are different things; an edition did not automatically confer all three.";
 
-        if (c.id === "latasha-videos")
-          copy =
-            "LATASHÁ and Jahmel Reynolds were making videos before they tried NFTs. She had chosen independence over pressure to change her image for a label, then faced the cost of producing work on her own terms. She recalls using unemployment checks to pay for shoots.\n\nJah filmed ilikedat and encouraged her to mint it. A first bid could cover her rent, she remembers. The work had not changed; a new route for supporting it had opened. Later, she would teach other artists how to use those tools and help create spaces where they could meet.";
-        if (c.id === "sound-genesis")
-          copy +=
-            " A release could now gather several visible supporters. Yet Sound initially selected its artists: a different route into music still had gatekeepers. Its later opening to uploads would test that boundary. Daniel Allan’s presence here connects his experiment in funding an unfinished EP to a new way of releasing individual songs.";
-        if (c.id === "zoratopia")
-          copy +=
-            " Zoratopia brought that organizing into physical gatherings. June 2022 reporting from New York names both LATASHÁ and Iman Europe. By December, an original video release gives us something more direct than a lineup: Iman performing in Miami. Watch that performance next.";
-        if (c.id === "catalog")
-          copy +=
-            " The founders’ EPROM example could be discovered on Catalog and bid on through Zora: two interfaces, one underlying edition.";
-        if (c.id === "chaos")
-          copy +=
-            " Camp Genesis and Camp Elektra had come before it. CHAOS expanded those experiments into 48 songs. Hear one next, then follow its makers.";
-        return `<section id="history-${c.id}" class="doc-chapter layout-${c.layout} ${i % 2 ? "reverse" : ""}" data-chapter="${i}"><figure class="doc-art"><img src="${media(c, 960)}" srcset="${media(c, 480)} 480w, ${media(c, 960)} 960w, ${media(c, 1500)} 1500w" sizes="(max-width:700px) 100vw, 60vw" alt="${esc(c.credit)}" loading="lazy" decoding="async" width="${dimensions[c.image]?.[0] || 960}" height="${dimensions[c.image]?.[1] || 960}">${c.record ? `<button class="doc-play" data-library-play="${c.record}" aria-label="Play ${esc(nftCatalog.find((r) => r.id === c.record)?.title || "recording")}">▶</button>` : ""}<figcaption><a href="${esc(creditURL(c) || "#")}" target="_blank" rel="noreferrer">${esc(c.credit)} ↗</a>${c.record ? `<span class="artifact-title">${c.id === "latasha-videos" ? "Also in the archive: " : "Listen: "}${esc(nftCatalog.find((r) => r.id === c.record)?.title || "")}</span>` : ""}</figcaption></figure><div class="doc-copy"><p class="kicker">${esc(c.date)}</p><h2>${esc(c.title)}</h2>${copy
-          .split(/(?<=\.)\s+(?=[A-Z])/)
-          .reduce((groups, sentence, i, all) => {
-            if (i === 0 || (i === Math.ceil(all.length / 2) && all.length > 4))
-              groups.push(sentence);
-            else groups[groups.length - 1] += " " + sentence;
-            return groups;
-          }, [])
-          .map((t) => `<p>${linked(t)}</p>`)
-          .join(
-            "",
-          )}${c.id === "catalog" ? `<p>${linked("The NFT is the edition’s identifiable token, not an uncopyable song. The music remains available to hear.")} <a class="entity" href="#concept-nft">What does owning it mean?</a></p>` : ""}${peopleStrip(c.id)}<a class="chapter-deeper" href="#chapter-${c.id}">Inside this story <span>＋</span></a>${c.id === "latasha-videos" ? `<p class="context-note">Her recollections are drawn from <a href="${esc(sources.minted.url)}" target="_blank" rel="noreferrer">Minted ↗</a>.</p>` : ""}<details class="doc-branches"><summary>More from this chapter</summary>${c.related
-          .map((id) => moments.find((m) => m.id === id))
-          .filter(Boolean)
-          .map(
-            (m) =>
-              `<a href="#chapter-${m.id}">${esc(m.short || m.title)} →</a>`,
-          )
-          .join(
-            "",
-          )}${c.id === "chaos" ? '<a href="#music?collection=CHAOS">Browse CHAOS recordings →</a>' : ""}</details></div></section>${c.id === "tape" ? `<section class="doc-transition foundation headline-scene" id="public-attention"><div class="headline-art" aria-hidden="true"></div><p class="kicker">Early 2021 / a wider public encounters music NFTs</p><h2>An album, a collectible, an invitation.</h2><p>In February, 3LAU announced an Ultraviolet auction combining NFTs with vinyl, unreleased music and experiences. In March, Kings of Leon and YellowHeart paired When You See Yourself with collectible artwork, vinyl and ticket offers.</p><p>These prominent releases made the range of possibilities visible. An NFT could sit inside a bundle of promises. Meanwhile, musicians and builders were exploring a smaller proposition: let anyone hear a recording, and let a supporter collect its edition.</p><a class="chapter-deeper" href="#concept-headlines">What did those releases offer? ＋</a></section>` : ""}`;
-      })
-      .join("") +
-    `<section class="doc-transition doc-finish" id="history-end"><p class="kicker">Pete’s perspective / shared for this documentary</p><h2>We could build the tools ourselves.</h2><p>Pete connects this period to becoming a technology entrepreneur. The lasting value, in his account, was in the people, their work and their ability to make things together. New software tools now let him act on that lesson: build what the community needs, rather than wait for a platform to provide it.</p><p>This is one participant’s interpretation. The archive holds other experiences too: opportunities, unfinished projects, exclusion, experiments that endured and platforms that closed.</p><a class="pill" href="#music">Explore the collection</a><p class="duration">A selected, source-backed account. This is not a complete census of the era or its participants.</p></section>`;
+          if (c.id === "latasha-videos")
+            copy =
+              "LATASHÁ and Jahmel Reynolds were making videos before they tried NFTs. She had chosen independence over pressure to change her image for a label, then faced the cost of producing work on her own terms. She recalls using unemployment checks to pay for shoots.\n\nJah filmed ilikedat and encouraged her to mint it. A first bid could cover her rent, she remembers. The work had not changed; a new route for supporting it had opened. Later, she would teach other artists how to use those tools and help create spaces where they could meet.";
+          if (c.id === "sound-genesis")
+            copy +=
+              " A release could now gather several visible supporters. Yet Sound initially selected its artists: a different route into music still had gatekeepers. Its later opening to uploads would test that boundary. Daniel Allan’s presence here connects his experiment in funding an unfinished EP to a new way of releasing individual songs.";
+          if (c.id === "zoratopia")
+            copy +=
+              " Zoratopia brought that organizing into physical gatherings. June 2022 reporting from New York names both LATASHÁ and Iman Europe. By December, an original video release gives us something more direct than a lineup: Iman performing in Miami. Watch that performance next.";
+          if (c.id === "catalog")
+            copy +=
+              " The founders’ EPROM example could be discovered on Catalog and bid on through Zora: two interfaces, one underlying edition.";
+          if (c.id === "chaos")
+            copy +=
+              " Camp Genesis and Camp Elektra had come before it. CHAOS expanded those experiments into 48 songs. Hear one next, then follow its makers.";
+          return `<section id="history-${c.id}" class="doc-chapter layout-${c.layout} ${i % 2 ? "reverse" : ""}" data-chapter="${i}"><figure class="doc-art"><img src="${media(c, 960)}" srcset="${media(c, 480)} 480w, ${media(c, 960)} 960w, ${media(c, 1500)} 1500w" sizes="(max-width:700px) 100vw, 60vw" alt="${esc(c.credit)}" loading="lazy" decoding="async" width="${dimensions[c.image]?.[0] || 960}" height="${dimensions[c.image]?.[1] || 960}">${c.record ? `<button class="doc-play" data-library-play="${c.record}" aria-label="Play ${esc(nftCatalog.find((r) => r.id === c.record)?.title || "recording")}">▶</button>` : ""}<figcaption><a href="${esc(creditURL(c) || "#")}" target="_blank" rel="noreferrer">${esc(c.credit)} ↗</a>${c.record ? `<span class="artifact-title">${c.id === "latasha-videos" ? "Also in the archive: " : "Listen: "}${esc(nftCatalog.find((r) => r.id === c.record)?.title || "")}</span>` : ""}</figcaption></figure><div class="doc-copy"><p class="kicker">${esc(c.date)}</p><h2>${esc(c.title)}</h2>${copy
+            .split(/(?<=\.)\s+(?=[A-Z])/)
+            .reduce((groups, sentence, i, all) => {
+              if (
+                i === 0 ||
+                (i === Math.ceil(all.length / 2) && all.length > 4)
+              )
+                groups.push(sentence);
+              else groups[groups.length - 1] += " " + sentence;
+              return groups;
+            }, [])
+            .map((t) => `<p>${linked(t)}</p>`)
+            .join(
+              "",
+            )}${c.id === "catalog" ? `<p>${linked("The NFT is the edition’s identifiable token, not an uncopyable song. The music remains available to hear.")} <a class="entity" href="#concept-nft">What does owning it mean?</a></p>` : ""}${peopleStrip(c.id)}<a class="chapter-deeper" href="#chapter-${c.id}">Inside this story <span>＋</span></a>${c.id === "latasha-videos" ? `<p class="context-note">Her recollections are drawn from <a href="${esc(sources.minted.url)}" target="_blank" rel="noreferrer">Minted ↗</a>.</p>` : ""}<details class="doc-branches"><summary>More from this chapter</summary>${c.related
+            .map((id) => moments.find((m) => m.id === id))
+            .filter(Boolean)
+            .map(
+              (m) =>
+                `<a href="#chapter-${m.id}">${esc(m.short || m.title)} →</a>`,
+            )
+            .join(
+              "",
+            )}${c.id === "chaos" ? '<a href="#music?collection=CHAOS">Browse CHAOS recordings →</a>' : ""}</details></div></section>${c.id === "tape" ? `<section class="doc-transition foundation headline-scene" id="public-attention"><div class="headline-art" aria-hidden="true"></div><p class="kicker">Early 2021 / a wider public encounters music NFTs</p><h2>An album, a collectible, an invitation.</h2><p>In February, 3LAU announced an Ultraviolet auction combining NFTs with vinyl, unreleased music and experiences. In March, Kings of Leon and YellowHeart paired When You See Yourself with collectible artwork, vinyl and ticket offers.</p><p>These prominent releases made the range of possibilities visible. An NFT could sit inside a bundle of promises. Meanwhile, musicians and builders were exploring a smaller proposition: let anyone hear a recording, and let a supporter collect its edition.</p><a class="chapter-deeper" href="#concept-headlines">What did those releases offer? ＋</a></section>` : ""}`;
+        })
+        .join("") +
+      `<section class="doc-transition doc-finish" id="history-end"><p class="kicker">Pete’s perspective / shared for this documentary</p><h2>We could build the tools ourselves.</h2><p>Pete connects this period to becoming a technology entrepreneur. The lasting value, in his account, was in the people, their work and their ability to make things together. New software tools now let him act on that lesson: build what the community needs, rather than wait for a platform to provide it.</p><p>This is one participant’s interpretation. The archive holds other experiences too: opportunities, unfinished projects, exclusion, experiments that endured and platforms that closed.</p><a class="pill" href="#music">Explore the collection</a><p class="duration">A selected, source-backed account. This is not a complete census of the era or its participants.</p></section>`,
+  );
   const film = document.querySelector("#film");
   const gathering = document.createElement("div");
   gathering.id = "gathering-sequence";
-  gathering.append(film.querySelector(".stage"), film.querySelector(".story"));
-  film.append(root);
+  const template = film.querySelector("#gathering-template");
+  gathering.append(template.content);
+  template.remove();
   root.querySelector("#history-zoratopia").after(gathering);
   const observer = new IntersectionObserver(
     (entries) => {
