@@ -29,7 +29,7 @@ test("collection queue persists through navigation and supports playback, skip, 
   await page.route("https://ipfs.filebase.io/ipfs/test/queue.wav", (r) =>
     r.fulfill({ body: wav, contentType: "audio/wav" }),
   );
-  await page.goto("/");
+  await page.goto("/legacy/");
   expect(reads).toBe(0);
   await page
     .getByRole("button", { name: "Play the collection", exact: true })
@@ -74,7 +74,7 @@ test("collection queue persists through navigation and supports playback, skip, 
   await expect(player).toBeHidden();
   await expect(player.locator("audio,video")).toHaveCount(0);
 });
-test("queue advances at the end and bounds consecutive failed recordings", async ({
+test("queue advances at the end but keeps a failed selection for retry", async ({
   page,
 }) => {
   let reads = 0;
@@ -90,7 +90,7 @@ test("queue advances at the end and bounds consecutive failed recordings", async
   await page.route("https://ipfs.filebase.io/ipfs/test/queue.wav", (r) =>
     r.fulfill({ body: wav, contentType: "audio/wav" }),
   );
-  await page.goto("/");
+  await page.goto("/legacy/");
   await page
     .getByRole("button", { name: "Play the collection", exact: true })
     .click();
@@ -109,7 +109,7 @@ test("queue advances at the end and bounds consecutive failed recordings", async
     "Playback stopped",
     { timeout: 10000 },
   );
-  expect(reads).toBe(3);
+  expect(reads).toBe(1);
 });
 
 test("next recording buffers silently and promotes the same element without another lookup", async ({
@@ -132,7 +132,7 @@ test("next recording buffers silently and promotes the same element without anot
   await page.route("https://ipfs.filebase.io/ipfs/test/long.wav", (r) =>
     r.fulfill({ body: longer, contentType: "audio/wav" }),
   );
-  await page.goto("/");
+  await page.goto("/legacy/");
   expect(lookups).toHaveLength(0);
   await page
     .getByRole("button", { name: "Play the collection", exact: true })
@@ -181,7 +181,7 @@ test("manual queue is silent until play and adding another song preserves the cu
   await page.route("https://ipfs.filebase.io/ipfs/test/queue.wav", (route) =>
     route.fulfill({ body: wav, contentType: "audio/wav" }),
   );
-  await page.goto("/#/records");
+  await page.goto("/legacy/#/records");
   const adds = page.locator("[data-queue]");
   await adds.nth(0).click();
   const player = page.getByRole("region", { name: "Collection player" });
@@ -205,7 +205,7 @@ test("manual queue is silent until play and adding another song preserves the cu
 test("The Park recordings filter by original chain and retain queue actions", async ({
   page,
 }) => {
-  await page.goto("/#/records?q=The%20Park");
+  await page.goto("/legacy/#/records?q=The%20Park");
   await expect(page.locator(".nft-card")).not.toHaveCount(0);
   await page
     .getByRole("combobox", { name: "Chains", exact: true })
@@ -240,7 +240,7 @@ test("an IPFS gateway failure retries the same content address without skipping 
     retries++;
     return r.fulfill({ body: wav, contentType: "audio/wav" });
   });
-  await page.goto("/#/records?q=Felly");
+  await page.goto("/legacy/#/records?q=Felly");
   await page.locator("[data-queue]").first().click();
   await page
     .getByRole("button", { name: "Play collection", exact: true })
@@ -283,7 +283,7 @@ test("collection editions queue independently and preserve uint256 token IDs", a
   await page.route("https://ipfs.filebase.io/ipfs/test/queue.wav", (r) =>
     r.fulfill({ body: wav, contentType: "audio/wav" }),
   );
-  await page.goto("/#/collection/record-chaos-walls");
+  await page.goto("/legacy/#/collection/record-chaos-walls");
   await page
     .getByRole("button", { name: "Add Another edition to queue", exact: true })
     .click();

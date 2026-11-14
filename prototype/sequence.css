@@ -2471,3 +2471,231 @@ body:not([data-scene="0"]) .performance video {
     flex: 1;
   }
 }
+
+/* Give the portrait space rather than placing release typography under copy. */
+#history-overstimulated .doc-art {
+  background: #27133c;
+}
+#history-overstimulated .doc-art img {
+  width: 65%;
+  object-position: center 45%;
+}
+@media (max-width: 700px) {
+  #history-overstimulated .doc-art img {
+    width: 100%;
+    object-position: center 35%;
+  }
+}
+
+#history-overstimulated .doc-art img {
+  mask-image: linear-gradient(to right, #000 70%, transparent 100%);
+}
+@media (max-width: 700px) {
+  #history-overstimulated .doc-art img {
+    mask-image: none;
+  }
+  .cinematic .doc-chapter .doc-art figcaption,
+  .cinematic .doc-chapter.reverse .doc-art figcaption {
+    top: 68px;
+    bottom: auto;
+    left: 16px;
+    right: auto;
+    max-width: 45%;
+    font-size: 10px;
+  }
+}
+
+/* A complete title frame, with the next scene revealed only by scrolling. */
+.cinematic #history-start {
+  height: 100svh;
+  min-height: 640px;
+  box-sizing: border-box;
+}
+.cinematic #history-start .opening-copy {
+  width: min(76vw, 1000px);
+  max-width: none;
+  padding: 100px 0 110px;
+  transform: none;
+}
+.cinematic #history-start h1 {
+  font-size: clamp(64px, min(9vw, 14svh), 144px);
+  line-height: 0.95;
+  letter-spacing: -0.065em;
+  margin: 22px 0;
+}
+.cinematic #history-start .opening-copy > p:not(.kicker) {
+  max-width: 38ch;
+  font-size: clamp(18px, 1.5vw, 24px);
+  margin: 0 0 20px;
+}
+.cinematic #history-start .opening-copy small {
+  margin-top: 16px;
+}
+.cinematic #history-start .scroll-cue {
+  margin-top: 16px;
+}
+html {
+  scrollbar-color: #646468 transparent;
+  scrollbar-width: thin;
+}
+#context {
+  scrollbar-color: #66666b transparent;
+  scrollbar-width: thin;
+}
+#context::-webkit-scrollbar {
+  width: 6px;
+}
+#context::-webkit-scrollbar-track {
+  background: transparent;
+}
+#context::-webkit-scrollbar-thumb {
+  background: #66666b;
+  border-radius: 8px;
+}
+#context::-webkit-scrollbar-thumb:hover {
+  background: #aaa5ad;
+}
+html:has(#context[open]) {
+  overflow: hidden;
+}
+#close-context {
+  border-radius: 50%;
+  height: 44px;
+  line-height: 1;
+  box-shadow: 0 0 0 1px #ffffff26;
+}
+#close-context:hover {
+  color: #ff75d8;
+}
+#context-body h2 {
+  padding-right: 48px;
+}
+@media (max-width: 700px) {
+  .cinematic #history-start {
+    min-height: 620px;
+  }
+  .cinematic #history-start .opening-copy {
+    width: auto;
+    padding: 100px 7vw 110px;
+  }
+  .cinematic #history-start h1 {
+    font-size: clamp(58px, 13vw, 88px);
+  }
+  .cinematic #history-start .intro-world figcaption {
+    display: none;
+  }
+}
+/* Portraits occupy a deliberate header, rather than a thumbnail in empty space. */
+#context .person-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 28px;
+  margin: 28px 0 32px;
+}
+#context .person-header .profile-photo {
+  margin: 0;
+  min-width: 0;
+}
+#context .person-header .profile-photo img {
+  display: block;
+  width: 100%;
+  height: 340px;
+  max-height: none;
+  margin: 0;
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 4px;
+}
+#context .person-header h2 {
+  padding: 0;
+  overflow-wrap: anywhere;
+  font-size: clamp(32px, 4vw, 58px);
+}
+#context .person-header .kicker {
+  font-size: 11px;
+  color: #bbb;
+}
+#context .profile-photo figcaption a {
+  padding: 10px 0;
+  border: 0;
+  color: #aaa;
+  line-height: 1.4;
+}
+#back-context {
+  background: transparent;
+  color: #eee;
+  border: 1px solid #ffffff35;
+  border-radius: 24px;
+  padding: 10px 16px;
+  min-height: 44px;
+  cursor: pointer;
+}
+#back-context:hover {
+  border-color: #ff75d8;
+  color: #ff75d8;
+}
+#context .chapter-artifact {
+  margin: 32px 0 40px;
+  background: #202124;
+  border-radius: 8px;
+  overflow: hidden;
+}
+#context .artifact-media {
+  position: relative;
+}
+#context .chapter-artifact img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 440px;
+  object-fit: contain;
+  margin: 0;
+}
+#context .artifact-media button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #111e;
+  color: white;
+  border: 1px solid #fff9;
+  cursor: pointer;
+}
+#context .artifact-media button:hover {
+  background: #ff75d8;
+  color: #111;
+}
+#context .chapter-artifact figcaption {
+  padding: 18px 22px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+#context .chapter-artifact figcaption strong,
+#context .chapter-artifact figcaption span {
+  display: block;
+}
+#context .chapter-artifact figcaption span {
+  color: #bbb;
+  margin-top: 4px;
+}
+#context .chapter-artifact figcaption a {
+  display: inline-block;
+  padding: 8px 0 0;
+  border: 0;
+}
+@media (max-width: 700px) {
+  #context .person-header {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  #context .person-header .profile-photo img {
+    height: 320px;
+  }
+  #context .person-header h2 {
+    font-size: 42px;
+    margin: 8px 0;
+  }
+}

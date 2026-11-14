@@ -1302,7 +1302,7 @@ Object.assign(sources, {
     date: "11 July 2023",
     kind: "Original project post",
     url: "https://x.com/Campfire_xyz/status/1678835225378553856",
-    note: "Names the performers and credits Pete Rango as co-producer. Original Sound link is sound.xyz/campfire/yell-and-scream. Contract and original media have not yet been resolved into this prototype; this source does not establish playback availability.",
+    note: "Names the performers and credits Pete Rango as co-producer. Original Sound link is sound.xyz/campfire/yell-and-scream. The Optimism edition and its original Arweave media were recovered on 6 November 2026.",
   },
   campfireMoving: {
     title: "Moving On: CAMPFIRE release post",
@@ -1310,7 +1310,7 @@ Object.assign(sources, {
     date: "9 August 2023",
     kind: "Original project post",
     url: "https://x.com/Campfire_xyz/status/1689402208620838913",
-    note: "Links the project's Moving On release on Sound. The token and original media remain to be resolved; no playable record is claimed here.",
+    note: "Links the project's Moving On release on Sound. The Optimism edition and its original Arweave media were recovered on 6 November 2026.",
   },
 });
 peteContext.sources.push("campfireYell");
@@ -1320,7 +1320,7 @@ const campfireContext = people.find((p) => p.id === "campfire");
 Object.assign(campfireContext, {
   kind: "Collective",
   role: "Collaborative artist camps and community-selected releases",
-  bio: "CAMPFIRE’s MIAMI FREESTYLE release notes describe an Art Basel camp in Miami with more than 50 artists collaborating. The project describes its S1 releases as songs selected by community vote. Its own 2023 posts also document Yell & Scream and Moving On. Only Miami Freestyle is currently playable in this selection; the other releases are documented below while their original media is being recovered.",
+  bio: "CAMPFIRE’s MIAMI FREESTYLE release notes describe an Art Basel camp in Miami with more than 50 artists collaborating. The project describes its S1 releases as songs selected by community vote. Its own 2023 posts also document Yell & Scream and Moving On. This selection includes MIAMI FREESTYLE on Ethereum and Moving On, Yell & Scream and STAR GIRL on Optimism, with playback resolved from the original NFT media.",
   sources: [...campfireContext.sources, "campfireYell", "campfireMoving"],
 });
 
@@ -1367,7 +1367,7 @@ if (erinProfile) {
 // The filmed account adds motivation to the event record, without inventing a venue or date.
 const zoraGathering = moments.find((m) => m.id === "zoratopia");
 zoraGathering.body =
-  "LATASHÁ’s organizing answered a problem she recognized. In Minted, she recalls having a performance stopped and finding familiar exclusions inside NFT events. New release tools had not automatically changed who felt welcome. She began helping artists understand minting and the available platforms; gathering people and sharing knowledge became part of her practice.\n\nZoratopia gave that work a physical setting. Austin’s March 2022 program billed Black Dave; June reporting from New York describes three days of programming with LATASHÁ and Iman Europe. The scene needed more than a place to transact. It needed people willing to teach, host and make room for the music. Those responsibilities were part of what the community was building.";
+  "LATASHÁ’s organizing answered a problem she recognized. She recalls having a performance stopped and finding familiar exclusions inside NFT events. New release tools had not automatically changed who felt welcome. She began helping artists understand minting and the available platforms; gathering people and sharing knowledge became part of her practice.\n\nZoratopia gave that work a physical setting. Austin’s March 2022 program billed Black Dave; June reporting from New York describes three days of programming with LATASHÁ and Iman Europe. The scene needed more than a place to transact. It needed people willing to teach, host and make room for the music. Those responsibilities were part of what the community was building.";
 zoraGathering.sources.push("minted", "latashaJah");
 zoraGathering.related.push("latasha-videos");
 

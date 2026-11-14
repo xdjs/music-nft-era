@@ -2010,3 +2010,100 @@ nftCatalog.push(
 );
 
 nftCatalog.push(...videoImport);
+
+const nokmly = nftCatalog.find(
+  (r) => r.id === "sound-legacy-fa947daea2b941da51ed42147cb9e8cdcf6445fc-1",
+);
+if (nokmly) nokmly.localArtwork = "/media/nokmly-480.webp";
+
+// CAMPFIRE releases recovered from their Optimism editions, 6 November 2026.
+nftCatalog.push(
+  ...[
+    {
+      id: "recovered-sound-10-c5e931a5190e6345a1ff9433887ffd62273c4cc7",
+      title:
+        "Moving On (ft. AL3C, Violetta, Fred Riko, & Né Marie | prod. Karma.wav)",
+      artist: "CAMPFIRE",
+      chainId: 10,
+      contract: "0xc5e931a5190e6345a1ff9433887ffd62273c4cc7",
+      tokenId: "1",
+      kind: "audio",
+      imageURI: "ar://K8GiCKhfO1JQzIEHpU7vLvdAG_o8h-nxBzJlxP6Zr-w",
+      platform: "Sound",
+      collection:
+        "Moving On (ft. AL3C, Violetta, Fred Riko, & Né Marie | prod. Karma.wav)",
+      creator: "0x14151e34e61d0B1267e692ff2c53f434fbce791c",
+      factory: "0x5bcf5773bcf1f131a0cad5c74aa9be1a80b63c55",
+      factoryVersion: 1,
+      discovery:
+        "Recovered via https://web3-music-repo.vercel.app/#artist/campfire; independently re-read tokenURI on Optimism.",
+      originalRelease: "https://www.sound.xyz/campfire/moving-on",
+      note: "Moving On is one of many original songs written, produced and recorded at our first-ever collaborative artist camp at Art Basel in Miami, Florida. This camp featured over 50 artists of various walks of life collaborating in spontaneous fashion. \n\nCAMPFIRE S1 is a curated collection of songs voted on by the CAMPFIRE community.\n\nProduced by. Karma.wav\n\nArtwork by Karey & TK.",
+      artistId: "campfire",
+      checkedAt: "2026-11-06T18:50:20.686Z",
+      checkedBlock: 159196120,
+      personIds: ["al3c"],
+    },
+    {
+      id: "recovered-sound-10-26497c0928c175f7d1c51a5bd345734d0db57f69",
+      title:
+        "Yell & Scream (ft. Leo Pastel, Brenna 🍄, Pragmatic, saikochild.xyz, & Tyler Saki | prod. Pete Rango)",
+      artist: "CAMPFIRE",
+      chainId: 10,
+      contract: "0x26497c0928c175f7d1c51a5bd345734d0db57f69",
+      tokenId: "1",
+      kind: "audio",
+      imageURI: "ar://E68lDvieo09NPMCyir4_a0Ifc_i7sMM7DlXhhi_bjoU",
+      platform: "Sound",
+      collection:
+        "Yell & Scream (ft. Leo Pastel, Brenna 🍄, Pragmatic, saikochild.xyz, & Tyler Saki | prod. Pete Rango)",
+      creator: "0x14151e34e61d0B1267e692ff2c53f434fbce791c",
+      factory: "0x5bcf5773bcf1f131a0cad5c74aa9be1a80b63c55",
+      factoryVersion: 1,
+      discovery:
+        "Recovered via https://web3-music-repo.vercel.app/#artist/campfire; independently re-read tokenURI on Optimism.",
+      originalRelease: "https://www.sound.xyz/campfire/yell-and-scream",
+      note: "Yell & Scream is one of many original songs written, produced and recorded at our first-ever collaborative artist camp at Art Basel in Miami, Florida. This camp featured over 50 artists of various walks of life collaborating in spontaneous fashion. \n\nCAMPFIRE S1 is a curated collection of songs voted on by the CAMPFIRE community.\n\nProduced by Tyler Saki & Pete Rango. \n\nMixed & Mastered by Pete Rango.\n\nArtwork by Karey & TK.",
+      artistId: "campfire",
+      checkedAt: "2026-11-06T18:50:23.985Z",
+      checkedBlock: 159196122,
+      personIds: ["pete-rango"],
+      credits: [
+        {
+          personId: "pete-rango",
+          role: "Co-production, mixing & mastering",
+        },
+      ],
+    },
+    {
+      id: "recovered-sound-10-090be8db9d5d26f7b09dab1902d1b02bb866954c",
+      title: "STAR GIRL (ft. X&ND, Delarose, & Elle Symone | Prod. Pete Rango)",
+      artist: "CAMPFIRE",
+      chainId: 10,
+      contract: "0x090be8db9d5d26f7b09dab1902d1b02bb866954c",
+      tokenId: "1",
+      kind: "audio",
+      imageURI: "ar://7ED-302ZrPm-0KhLS_7LSTts3RiEAEjCgKkhsftC-ms",
+      platform: "Sound",
+      collection:
+        "STAR GIRL (ft. X&ND, Delarose, & Elle Symone | Prod. Pete Rango)",
+      creator: "0x14151e34e61d0B1267e692ff2c53f434fbce791c",
+      factory: "0x5bcf5773bcf1f131a0cad5c74aa9be1a80b63c55",
+      factoryVersion: 1,
+      discovery:
+        "Recovered via https://web3-music-repo.vercel.app/#artist/campfire; independently re-read tokenURI on Optimism.",
+      originalRelease: "https://www.sound.xyz/campfire/star-girl",
+      note: "STAR GIRL is one of many original songs written, produced and recorded at our first-ever collaborative artist camp at Art Basel in Miami, Florida. This camp featured over 50 artists of various walks of life collaborating in spontaneous fashion. \n\nCAMPFIRE S1 is a curated collection of songs voted on by the CAMPFIRE community.\n\nProduced and Mixed by Pete Rango.\n\nMastered by Rome Palermo.\n\nArtwork by Karey & TK.",
+      artistId: "campfire",
+      checkedAt: "2026-11-06T18:49:53.428Z",
+      checkedBlock: 159196106,
+      personIds: ["pete-rango"],
+      credits: [
+        {
+          personId: "pete-rango",
+          role: "Production & mixing",
+        },
+      ],
+    },
+  ],
+);

@@ -1,3 +1,4 @@
+import { LAB_PATH, labText, stripLabPath, labData } from "./src/lab-path.mjs";
 import { createReadCache } from "./src/request-cache.mjs";
 import { readCollection } from "./src/nft-collections.mjs";
 import { nftCatalog } from "./src/nft-catalog.js";
@@ -20,8 +21,9 @@ const files = new Map([
   ["/prototype/", "prototype/index.html"],
   ["/prototype/prototype.css", "prototype/prototype.css"],
   ["/prototype/prototype.js", "prototype/prototype.js"],
-  ["/", "index.html"],
-  ["/index.html", "index.html"],
+  ["/", "prototype/sequence.html"],
+  ["/legacy/", "index.html"],
+  ["/index.html", "prototype/sequence.html"],
   ["/src/app.js", "src/app.js"],
   ["/src/playlist.js", "src/playlist.js"],
   ["/src/media-recovery.js", "src/media-recovery.js"],
@@ -43,7 +45,11 @@ const files = new Map([
   ["/favicon.svg", "public/favicon.svg"],
 ]);
 for (const name of [
+  "web3-music-era-cover.png",
   "helmet-city-poster.png",
+  "iman-mwwm-loop.webm",
+  "nokmly-480.webp",
+  "video-latasha-623-1500.webp",
   "lab-preview-20261104.png",
   "sound-of-fractures-press.jpg",
   "latasha-press.jpg",
@@ -97,6 +103,7 @@ for (const record of nftCatalog) {
     files.set(record.localArtwork, `public${record.localArtwork}`);
 }
 const types = {
+  webm: "video/webm",
   webp: "image/webp",
   jpg: "image/jpeg",
   png: "image/png",
@@ -110,15 +117,22 @@ const cache = new Map();
 const readToken = createReadCache();
 export async function handler(req, res) {
   const url = new URL(req.url, "http://localhost");
+    const onLab = url.pathname === LAB_PATH || url.pathname.startsWith(LAB_PATH + "/");
+    url.pathname = stripLabPath(url.pathname);
+    res.onLab = onLab;
   res.setHeader("X-Content-Type-Options", "nosniff");
   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
   res.setHeader(
     "Content-Security-Policy",
-    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://arweave.net https://*.arweave.net https://ipfs.filebase.io https://arpeggi-prod-public.s3.us-west-2.amazonaws.com; media-src https://gateway.pinata.cloud https://arweave.net https://*.arweave.net https://ipfs.filebase.io https://arpeggi-prod-public.s3.us-west-2.amazonaws.com; connect-src 'self'; frame-src https://bandcamp.com; object-src 'none'; base-uri 'none'; frame-ancestors 'self' https://lab.musicnerd.net https://lab.musicnerd.vercel.app",
+    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://arweave.net https://*.arweave.net https://ipfs.filebase.io https://arpeggi-prod-public.s3.us-west-2.amazonaws.com; media-src 'self' https://turbo-gateway.com https://*.turbo-gateway.com https://gateway.pinata.cloud https://arweave.net https://*.arweave.net https://ipfs.filebase.io https://arpeggi-prod-public.s3.us-west-2.amazonaws.com; connect-src 'self'; frame-src https://bandcamp.com; object-src 'none'; base-uri 'none'; frame-ancestors 'self' https://lab.musicnerd.net https://lab.musicnerd.vercel.app",
   );
   if (req.method !== "GET" && req.method !== "HEAD") {
     res.writeHead(405);
     return res.end("Read-only prototype");
+  }
+  if (url.pathname === "/sequence/" || url.pathname === "/sequence") {
+    res.writeHead(308, { Location: (onLab ? LAB_PATH + "/" : "/") + url.search });
+    return res.end();
   }
   if (url.pathname.startsWith("/api/collection/")) {
     const record = nftCatalog.find((r) => r.id === url.pathname.slice(16));
@@ -131,7 +145,7 @@ export async function handler(req, res) {
       "Content-Type": "application/json",
       "Cache-Control": "no-store",
     });
-    return res.end(JSON.stringify(value));
+    return res.end(JSON.stringify(onLab ? labData(value) : value));
   }
   if (url.pathname.startsWith("/api/nft/")) {
     const record = nftCatalog.find((r) => r.id === url.pathname.slice(9));
@@ -157,7 +171,7 @@ export async function handler(req, res) {
       "Content-Type": "application/json",
       "Cache-Control": "no-store",
     });
-    return res.end(req.method === "HEAD" ? undefined : JSON.stringify(value));
+    return res.end(req.method === "HEAD" ? undefined : JSON.stringify(onLab ? labData(value) : value));
   }
   if (url.pathname.startsWith("/api/directory/")) {
     const key = url.pathname.slice("/api/directory/".length);
@@ -175,7 +189,7 @@ export async function handler(req, res) {
       "Content-Type": "application/json",
       "Cache-Control": "no-store",
     });
-    return res.end(JSON.stringify(value));
+    return res.end(JSON.stringify(onLab ? labData(value) : value));
   }
   const file = files.get(url.pathname);
   if (!file) {
@@ -183,7 +197,8 @@ export async function handler(req, res) {
     return res.end("Not found");
   }
   try {
-    const body = await readFile(root + file);
+    let body = await readFile(root + file);
+    if (onLab && /\.(html|js|css)$/.test(file)) body = labText(body.toString());
     res.writeHead(200, {
       "Content-Type": types[file.split(".").pop()],
       "Cache-Control": "no-cache",

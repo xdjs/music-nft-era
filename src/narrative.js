@@ -908,14 +908,12 @@ eraMoments.push(
       title: "The video was never just promotion.",
       short: "LATASHÁ and Jah: the work behind the mint",
       deck: "Performance, direction, dance and music could be supported as one work.",
-      body: "Before anyone collected a token, LATASHÁ and Jah were making videos. In Minted, she recalls financing independent production with unemployment payments after resisting pressure to become a different kind of performer. The video mattered because it held the artist she wanted to be: music, movement and the visual imagination she had carried since childhood.\n\nJahmel Reynolds was part of that making. The filmmaker behind ilikedat also encouraged her to explore NFTs. She remembers the first bid as enough to pay rent. The significance was concrete: support could reach work she had already chosen to make, without first persuading a label to approve that choice.\n\nThe film later returns to a harder release: Joyride II. LATASHÁ discusses offering copies of a music video to her community and what it would take to recover production costs. An edition was a creative and practical decision, not a guarantee of sustainability. Her account of abundance also includes artists working together and the relationships that remained beyond a sale.",
+      body: "LATASHÁ wanted her videos to hold everything she brought to music: writing, movement, performance and the visual worlds she imagined. She had resisted pressure to reshape herself for a label. Staying independent meant finding another way to pay for the work; she recalls using unemployment checks to finance shoots.\n\nJahmel Reynolds filmed ilikedat and encouraged her to try NFTs. The video already existed. What changed was how someone could support it. She remembers a first bid large enough to cover her rent. For an artist paying to make her own work, that was a practical opening.\n\nThe credits show how many hands shaped these films. CULTURE names Terrance Young as director and LATASHÁ, Danilo Lima and Jamee Cornelia as editors. Later, Joyride II offered the video in editions. LATASHÁ was testing how a community could help sustain an independent production—and teaching other artists how to use those tools.",
       people: ["latasha", "jah"],
       sources: ["minted", "latashaJah"],
       related: ["zoratopia", "glass", "royalties"],
       artifact: "Watch the documentary and read the labeled transcript",
       artifactUrl: "https://www.pbs.org/video/minted-3tk5lb/",
-      uncertainty:
-        "The film’s bid recollection does not establish the completed-sale timestamp. The original tokens for ilikedat (Zora #623) and Joyride II: Showtime (0x75c8…38bD, #1) have been resolved to their video media. Final sale totals and production-cost recovery remain unverified.",
     },
     {
       id: "royalties",
@@ -925,7 +923,7 @@ eraMoments.push(
       title: "Who would keep the promise?",
       short: "Resale royalties and the limits of the platform",
       deck: "A promise of continuing support still depended on how a sale was carried out.",
-      body: "The appeal was easy to understand: if a work found another collector, its maker might share in that next sale. In Minted, artists describe how meaningful continuing payments could be—and the disappointment when marketplaces stopped honoring the arrangement. That changed the relationship they thought they were building around a work.\n\nAn NFT can specify royalty information without forcing every marketplace to pay it. ERC-2981, a widely used standard, tells a marketplace the recipient and amount; it does not itself move the money or universally enforce payment. The promise was partly technical and partly a choice made by the people operating a market.\n\nFor music, three arrangements must stay separate. Resale royalties concern the token changing hands. A split routes a payment among named recipients. Composition and master rights govern the music itself. Buying an edition does not automatically grant those rights. The distinction helps explain why artists could gain new options while still depending on platforms—and why building and maintaining alternatives became part of the story.",
+      body: "The appeal was easy to understand: if a work found another collector, its maker might share in that next sale. Artists describe how meaningful continuing payments could be—and the disappointment when marketplaces stopped honoring the arrangement. That changed the relationship they thought they were building around a work.\n\nAn NFT can specify royalty information without forcing every marketplace to pay it. ERC-2981, a widely used standard, tells a marketplace the recipient and amount; it does not itself move the money or universally enforce payment. The promise was partly technical and partly a choice made by the people operating a market.\n\nFor music, three arrangements must stay separate. Resale royalties concern the token changing hands. A split routes a payment among named recipients. Composition and master rights govern the music itself. Buying an edition does not automatically grant those rights. The distinction helps explain why artists could gain new options while still depending on platforms—and why building and maintaining alternatives became part of the story.",
       people: [],
       sources: ["royaltyStandard", "minted"],
       related: ["catalog", "overstimulated", "afterglow", "the-park"],
@@ -970,8 +968,6 @@ videoChapter.sources.push(
   "latashaJoyrideToken",
 );
 videoChapter.people.push("jamee-cornelia");
-videoChapter.body +=
-  "\n\nThe releases also preserve the people behind the camera. CULTURE, introduced as the first visual installment of Joyride, credits Terrance Young as director and LATASHÁ, Danilo Lima and Jamee Cornelia as editors. Cornelia appears elsewhere in this history as a musician; here she helped shape another artist’s film. Those credits make the collaboration visible beyond the name on the release.";
 
 eraSources.spinampInterview = {
   title: "Spinamp founder interview",
@@ -1005,4 +1001,37 @@ eraMoments.push({
   artifactUrl: "https://app.spinamp.xyz/",
   uncertainty:
     "The 2022 starting point is inferred from the founder’s July 2024 account of two years of development. Current support for individual releases has not been audited.",
+});
+
+eraSources.elektraHistory = {
+  title: "Songcamp: Genesis and Elektra",
+  by: "Songcamp",
+  date: "2021 account; accessed 6 November 2026",
+  kind: "Project history",
+  url: "https://paragraph.com/@songcamp/an-introduction-to-songcamp",
+  note: "Names Camp Genesis as the first camp and Camp Elektra as the second, beginning in summer 2021.",
+};
+eraSources.elektraAuction = {
+  title: "The Elektra Songs Auction",
+  by: "Songcamp",
+  date: "16 August 2021",
+  kind: "Original release announcement",
+  url: "https://songcamp.mirror.xyz/4pkg2xeNL6BlC-fya7CQ-HPG5FbY2o7Cx3FYQWHWvbI",
+  note: "Documents Catalog song editions and plans for the Elektra story, game and community governance. Planned outcomes are not assumed to have occurred.",
+};
+eraMoments.push({
+  id: "elektra",
+  date: "Summer 2021 / Songcamp’s second camp",
+  year: 2021,
+  type: "Collective experiment",
+  title: "Elektra: the camp became a world.",
+  short: "Camp Elektra",
+  deck: "Between Genesis and CHAOS, Songcamp expanded what a release could contain.",
+  body: "Camp Genesis was Songcamp’s first camp. Camp Elektra followed in summer 2021, bringing the music into a project with a story and game of its own. Its August 16 auction announcement offered one-of-one song editions through Catalog.\n\nThe announcement also proposed handing the project to an Elektra DAO to steward its story, artwork and game. Those were plans, not proof of every later outcome. Elektra helps explain the step toward CHAOS: the group was already experimenting with making a shared world around the songs, rather than stopping at their release.",
+  people: ["matthew-chaim"],
+  sources: ["elektraHistory", "elektraAuction"],
+  related: ["genesis", "chaos", "catalog"],
+  artifact: "Read the original Elektra release",
+  artifactUrl:
+    "https://songcamp.mirror.xyz/4pkg2xeNL6BlC-fya7CQ-HPG5FbY2o7Cx3FYQWHWvbI",
 });

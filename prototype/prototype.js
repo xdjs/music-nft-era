@@ -27,7 +27,7 @@ const notes = {
   },
   latasha: {
     title: "Making room for other artists",
-    text: "In Minted, LATASHÁ also recalls exclusion at NFT NYC and describes organizing seminars to help other artists understand the tools. The promise of access did not remove the need to build welcoming spaces. Her account gives us a question to carry through the era: who does the work of turning an available technology into a place people can actually participate?",
+    text: "LATASHÁ also recalls exclusion at NFT NYC and describes organizing seminars to help other artists understand the tools. The promise of access did not remove the need to build welcoming spaces. Her account gives us a question to carry through the era: who does the work of turning an available technology into a place people can actually participate?",
     sources: ["minted", "latashaJah"],
   },
   chaos: {

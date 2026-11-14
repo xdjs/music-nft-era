@@ -3,6 +3,17 @@ export function alternateMediaURL(url) {
   try {
     const parsed = new URL(url);
     if (
+      parsed.protocol === "https:" &&
+      !parsed.username &&
+      !parsed.password &&
+      !parsed.port &&
+      /^(?:[a-z2-7]{52}\.)?arweave\.net$/.test(parsed.hostname) &&
+      /^\/[A-Za-z0-9_-]{43}(?:\/|$)/.test(parsed.pathname)
+    ) {
+      parsed.hostname = "turbo-gateway.com";
+      return parsed.href;
+    }
+    if (
       parsed.protocol !== "https:" ||
       parsed.hostname !== "ipfs.filebase.io" ||
       !/^\/ipfs\/[A-Za-z0-9]+(?:\/|$)/.test(parsed.pathname)

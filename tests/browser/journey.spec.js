@@ -15,7 +15,7 @@ for (const theme of ["dark", "light"]) {
     await page.route("**/api/directory/**", (r) =>
       r.fulfill({ json: { status: "unavailable" } }),
     );
-    await page.goto("/");
+    await page.goto("/legacy/");
     await expect(page.locator("iframe")).toHaveCount(0);
     await expect(page.locator(".film-hero-photo")).toHaveCount(1);
     await expect
@@ -27,7 +27,7 @@ for (const theme of ["dark", "light"]) {
           ),
       )
       .toBe(true);
-    await expect(page.locator("h1")).toHaveText("A scene,in the making.");
+    await expect(page.locator("h1")).toHaveText("The Web3Music Era.");
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -146,12 +146,12 @@ test("direct detail link, keyboard focus and reduced motion", async ({
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/#/moment/walls?source=walls");
+  await page.goto("/legacy/#/moment/walls?source=walls");
   await expect(page.locator("#sheet-title")).toBeFocused();
   await page.keyboard.press("Escape");
   await expect(page.locator("#sheet")).not.toBeVisible();
   await expect(page.locator("h1")).toContainText("Two weeks");
-  await page.goto("/");
+  await page.goto("/legacy/");
   await page.keyboard.press("Tab");
   await expect(
     page.getByRole("link", { name: "Skip to the story" }),
@@ -173,7 +173,7 @@ test("media is opt-in, has fallback, and is destroyed on stop", async ({
   page,
 }) => {
   await page.route("https://bandcamp.com/**", (r) => r.abort());
-  await page.goto("/");
+  await page.goto("/legacy/");
   await expect(page.locator("iframe")).toHaveCount(0);
   await page.getByRole("button", { name: "NOKMLY remixes" }).click();
   await expect(page.locator("#listening")).toBeVisible();
@@ -216,7 +216,7 @@ test("a stalled directory request times out without stranding the story", async 
 }) => {
   await page.clock.install();
   await page.route("**/api/directory/**", () => {});
-  await page.goto("/#/moment/remix?person=three-oscillators");
+  await page.goto("/legacy/#/moment/remix?person=three-oscillators");
   await expect(page.locator("#directory-status")).toContainText("Checking");
   await page.clock.runFor(8100);
   await expect(page.locator("#directory-status")).toContainText(
@@ -229,7 +229,7 @@ test("a stalled directory request times out without stranding the story", async 
 test("scrolling reveals the story without entering a route and preserves source detours", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/legacy/");
   const beat = page.locator("#story-rooms .scroll-beat").first();
   await beat.scrollIntoViewIfNeeded();
   await expect(beat.getByRole("heading")).toHaveText("The room was a link.");
@@ -265,7 +265,7 @@ test("chapter rail, format comparison and return to the documentary", async ({
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
+  await page.goto("/legacy/");
   await page.locator(".chapter-menu > summary").click();
   const jump = page.getByRole("button", {
     name: "Jump to Reinventing the release",
@@ -319,7 +319,7 @@ test("NFT plays inline on request, preserves provenance, and stops on navigation
     });
   });
   await page.route("https://ipfs.filebase.io/**", (route) => route.abort());
-  await page.goto("/#/records?q=Black%20Dave");
+  await page.goto("/legacy/#/records?q=Black%20Dave");
   expect(reads).toBe(0);
   await expect(page.locator("audio,video")).toHaveCount(0);
   await page
@@ -356,7 +356,7 @@ test("collection pagination retains full token IDs and failed reads remain retry
     requested = r.request().url();
     return r.fulfill({ status: 503, json: { status: "unavailable" } });
   });
-  await page.goto("/#/collection/record-28b708ee");
+  await page.goto("/legacy/#/collection/record-28b708ee");
   await page.getByRole("button", { name: "Play An edition" }).click();
   await expect(
     page.getByRole("button", { name: "Retry An edition" }),
@@ -369,7 +369,7 @@ test("collection pagination retains full token IDs and failed reads remain retry
 test("recording filters combine, deep-link and clear without leaving stale results", async ({
   page,
 }) => {
-  await page.goto("/#/records?collection=CHAOS");
+  await page.goto("/legacy/#/records?collection=CHAOS");
   await expect(page.locator(".record-coverage")).toContainText(
     "43 selected works",
   );
@@ -394,7 +394,7 @@ test("recording filters combine, deep-link and clear without leaving stale resul
 test("six movements keep evidence optional and CHAOS connected to its recording", async ({
   page,
 }, info) => {
-  await page.goto("/");
+  await page.goto("/legacy/");
   await expect(page.locator(".scroll-sequence")).toHaveCount(6);
   for (const id of ["release", "rooms", "band", "remain"]) {
     const firstBeat = page
@@ -446,7 +446,7 @@ test("six movements keep evidence optional and CHAOS connected to its recording"
 test("scene frames follow the story both ways and Catalog names open their evidence", async ({
   page,
 }, info) => {
-  await page.goto("/");
+  await page.goto("/legacy/");
   const chapter = page.locator("#story-release");
   const catalog = chapter.locator(".film-beat").nth(3);
   await catalog.scrollIntoViewIfNeeded();
@@ -493,7 +493,7 @@ test("scene frames follow the story both ways and Catalog names open their evide
 test("a song leads into its collective experiment and back", async ({
   page,
 }, info) => {
-  await page.goto("/#/moment/walls");
+  await page.goto("/legacy/#/moment/walls");
   const reading = page.getByRole("region", { name: "Inside this experiment" });
   await expect(
     reading.getByRole("heading", { name: "A demo waiting for someone else" }),

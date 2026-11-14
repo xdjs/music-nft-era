@@ -30,17 +30,12 @@ let reduced = reducedQuery.matches,
   origin,
   loading = false,
   userPaused = false,
-  userInteracted = false;
+  userInteracted = false,
+  performanceVisible = false,
+  ambientStarting = false;
 audio.hidden = true;
 audio.preload = "none";
 document.body.append(audio);
-video.addEventListener(
-  "loadedmetadata",
-  () => {
-    if (video.duration > 8) video.currentTime = 8;
-  },
-  { once: true },
-);
 let library;
 const loads = new Map(),
   recoveries = new Map();
@@ -138,6 +133,7 @@ async function play(media, { muted = false } = {}) {
   active = media;
   userPaused = false;
   media.muted = muted;
+  delete media.dataset.ambient;
   try {
     await load(media === video ? "record-1e31c103" : "record-69c77ef0", media);
     if (userPaused) return;
@@ -162,12 +158,22 @@ $("#play-record").onclick = () => {
   } else play(audio);
 };
 $("#pause").onclick = () => {
+  if (active === video && video.dataset.ambient === "true") {
+    userPaused = !video.paused;
+    if (userPaused) video.pause();
+    else video.play().catch(() => {});
+    return;
+  }
   if (!active.paused) {
     userPaused = true;
     active.pause();
   } else play(active, { muted: active.muted });
 };
 $("#sound").onclick = () => {
+  if (active === video && video.dataset.ambient === "true") {
+    play(video);
+    return;
+  }
   userInteracted = true;
   if (active.paused) play(active, { muted: false });
   else {
@@ -502,6 +508,7 @@ function update() {
   if ((inHistory || index > 1) && active === video && !video.paused) {
     video.pause();
   } // The performance does not soundtrack the separate camp by accident.
+  syncAmbientPerformance();
 }
 function schedule() {
   if (!frame) {
@@ -547,7 +554,7 @@ function show() {
   const hash = location.hash;
   if (hash === "#scenes") {
     body.innerHTML =
-      '<h2>The Music NFT era</h2><p>Follow the story, or return to a chapter.</p><a href="#history-start">The Music NFT era</a><a href="#why-this-mattered">Why artists wanted alternatives</a><a href="#understanding-nfts">What is a music NFT?</a>' +
+      '<h2>The Web3 Music Era</h2><p>Follow the story, or return to a chapter.</p><a href="#history-start">The Web3 Music Era</a><a href="#why-this-mattered">Why artists wanted alternatives</a><a href="#understanding-nfts">What is a music NFT?</a>' +
       chapterList
         .map(
           (c) =>
@@ -611,35 +618,47 @@ dialog.addEventListener("close", () => origin?.focus({ preventScroll: true }));
 window.addEventListener("popstate", show);
 window.addEventListener("hashchange", show);
 show();
-// Fetch the performance only when its chapter enters the viewport.
+// A silent excerpt of the original NFT makes the scene move without waiting
+// for a large archival file. Explicit listening still resolves the full NFT.
+function syncAmbientPerformance() {
+  const allowed =
+    performanceVisible &&
+    scene < 2 &&
+    !reduced &&
+    !navigator.connection?.saveData &&
+    !userPaused &&
+    !userInteracted &&
+    !document.body.classList.contains("in-history") &&
+    !document.body.classList.contains("library-open") &&
+    !document.hidden;
+  if (!allowed) {
+    if (video.dataset.ambient === "true") video.pause();
+    return;
+  }
+  if (!video.src) {
+    video.src = "/media/iman-mwwm-loop.webm";
+    video.dataset.ambient = "true";
+    video.muted = true;
+  }
+  if (video.dataset.ambient === "true" && video.paused && !ambientStarting) {
+    ambientStarting = true;
+    video
+      .play()
+      .catch(() => {})
+      .finally(() => {
+        ambientStarting = false;
+      });
+  }
+}
 const performanceObserver = new IntersectionObserver(
   (entries) => {
-    if (
-      !entries.some((e) => e.isIntersecting) ||
-      reduced ||
-      navigator.connection?.saveData
-    )
-      return;
-    performanceObserver.disconnect();
-    load("record-1e31c103", video)
-      .then(() => {
-        if (
-          scene < 2 &&
-          !reduced &&
-          !userPaused &&
-          !userInteracted &&
-          !document.body.classList.contains("in-history") &&
-          !document.body.classList.contains("library-open")
-        ) {
-          video.muted = true;
-          return video.play();
-        }
-      })
-      .catch(() => status("Press play to load the original footage."));
+    performanceVisible = entries.some((e) => e.isIntersecting);
+    syncAmbientPerformance();
   },
   { threshold: 0.1 },
 );
 performanceObserver.observe(document.querySelector("#beat-0"));
+document.addEventListener("visibilitychange", syncAmbientPerformance);
 
 updateControls();
 
@@ -659,6 +678,10 @@ document.addEventListener("click", (e) => {
   }
   const play = e.target.closest("[data-library-play]");
   if (play) {
+    if (dialog.open) {
+      close();
+      dialog.close();
+    }
     library.play(play.dataset.libraryPlay);
     return;
   }

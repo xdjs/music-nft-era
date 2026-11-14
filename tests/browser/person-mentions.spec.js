@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 test("an inline name opens context, social links and a nested source without losing place", async ({
   page,
 }, info) => {
-  await page.goto("/");
+  await page.goto("/legacy/");
   await page.locator("#story-release .beat-evidence summary").first().click();
   const name = page
     .locator("#story-release .film-copy")
@@ -41,7 +41,7 @@ test("an inline name opens context, social links and a nested source without los
 test("chapter participants and recording collaborators have usable drawers", async ({
   page,
 }) => {
-  await page.goto("/#/moment/future-surf");
+  await page.goto("/legacy/#/moment/future-surf");
   await page
     .locator(".story-narrative")
     .getByRole("link", { name: "Jamee Cornelia", exact: true })
@@ -51,7 +51,7 @@ test("chapter participants and recording collaborators have usable drawers", asy
     page.getByRole("link", { name: "Artist site & socials ↗", exact: true }),
   ).toHaveAttribute("href", "https://artschooldropout.carrd.co/");
   await page.keyboard.press("Escape");
-  await page.goto("/#/records?collection=CHAOS");
+  await page.goto("/legacy/#/records?collection=CHAOS");
   const artist = page
     .locator(".nft-card .small-label a.person-mention")
     .filter({ hasText: "Three Oscillators" })
@@ -60,7 +60,7 @@ test("chapter participants and recording collaborators have usable drawers", asy
   await expect(page.locator("#sheet-title")).toHaveText("Three Oscillators");
   await expect(page.locator(".artist-nfts button").first()).toBeVisible();
   await page.keyboard.press("Escape");
-  await page.goto("/#/moment/eternal-garden");
+  await page.goto("/legacy/#/moment/eternal-garden");
   await page
     .locator(".story-narrative")
     .getByRole("link", { name: "TK", exact: true })
@@ -89,7 +89,7 @@ test("opening and closing a person from a recording preserves its player element
     }),
   );
   await page.route("https://ipfs.filebase.io/**", (route) => route.abort());
-  await page.goto("/#/records?q=Black%20Dave");
+  await page.goto("/legacy/#/records?q=Black%20Dave");
   await page
     .getByRole("button", { name: "Play Black Dave - Calm Down", exact: true })
     .click();
@@ -116,7 +116,7 @@ test("opening and closing a person from a recording preserves its player element
 test("platform context is available in place and Imogen has a complete passage", async ({
   page,
 }, info) => {
-  await page.goto("/");
+  await page.goto("/legacy/");
   const passage = page.locator("#story-release .film-copy").nth(1);
   await passage.scrollIntoViewIfNeeded();
   await expect(page.locator("#story-release")).toHaveAttribute(
@@ -179,10 +179,12 @@ test("platform context is available in place and Imogen has a complete passage",
 test("record library filters contributors and collections without privileging CHAOS", async ({
   page,
 }, info) => {
-  await page.goto("/#/records");
+  await page.goto("/legacy/#/records");
   await expect(page.locator(".collection-spotlight")).toHaveCount(0);
   await page.getByLabel("Artists", { exact: true }).selectOption("Pete Rango");
-  await expect(page.locator(".nft-card")).toHaveCount(2);
+  await expect(page.locator(".nft-card")).toHaveCount(4);
+  await expect(page.locator(".nft-grid")).toContainText("Yell & Scream");
+  await expect(page.locator(".nft-grid")).toContainText("STAR GIRL");
   await expect(page.locator(".nft-grid")).toContainText("NOT4ME");
   await expect(page.locator(".nft-grid")).toContainText("MIAMI FREESTYLE");
   await page.screenshot({
@@ -195,7 +197,7 @@ test("record library filters contributors and collections without privileging CH
   await page.getByLabel("Artists", { exact: true }).selectOption("");
   await page.getByLabel("Collections", { exact: true }).selectOption("CHAOS");
   await expect(page.locator(".nft-card")).toHaveCount(43);
-  await page.goto("/#/?person=eprom");
+  await page.goto("/legacy/#/?person=eprom");
   const photo = page.locator(".person-portrait img");
   await expect(photo).toBeVisible();
   await expect
@@ -213,7 +215,7 @@ test("profiles lead with playable artwork and stop their local player on close",
   await page.route("**/api/nft/**", (route) =>
     route.fulfill({ json: { status: "unavailable" } }),
   );
-  await page.goto("/#/?person=pete-rango");
+  await page.goto("/legacy/#/?person=pete-rango");
   const work = page.locator(".artist-nfts .nft-card").first();
   await expect(work).toContainText("Mixing & mastering");
   await expect(work.locator(".record-artwork img")).toHaveCount(1);
