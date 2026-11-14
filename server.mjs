@@ -1,3 +1,4 @@
+import { LAB_PATH, labText, stripLabPath, labData } from "./src/lab-path.mjs";
 import { createReadCache } from "./src/request-cache.mjs";
 import { readCollection } from "./src/nft-collections.mjs";
 import { nftCatalog } from "./src/nft-catalog.js";
@@ -116,6 +117,9 @@ const cache = new Map();
 const readToken = createReadCache();
 export async function handler(req, res) {
   const url = new URL(req.url, "http://localhost");
+    const onLab = url.pathname === LAB_PATH || url.pathname.startsWith(LAB_PATH + "/");
+    url.pathname = stripLabPath(url.pathname);
+    res.onLab = onLab;
   res.setHeader("X-Content-Type-Options", "nosniff");
   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
   res.setHeader(
@@ -141,7 +145,7 @@ export async function handler(req, res) {
       "Content-Type": "application/json",
       "Cache-Control": "no-store",
     });
-    return res.end(JSON.stringify(value));
+    return res.end(JSON.stringify(onLab ? labData(value) : value));
   }
   if (url.pathname.startsWith("/api/nft/")) {
     const record = nftCatalog.find((r) => r.id === url.pathname.slice(9));
@@ -167,7 +171,7 @@ export async function handler(req, res) {
       "Content-Type": "application/json",
       "Cache-Control": "no-store",
     });
-    return res.end(req.method === "HEAD" ? undefined : JSON.stringify(value));
+    return res.end(req.method === "HEAD" ? undefined : JSON.stringify(onLab ? labData(value) : value));
   }
   if (url.pathname.startsWith("/api/directory/")) {
     const key = url.pathname.slice("/api/directory/".length);
@@ -185,7 +189,7 @@ export async function handler(req, res) {
       "Content-Type": "application/json",
       "Cache-Control": "no-store",
     });
-    return res.end(JSON.stringify(value));
+    return res.end(JSON.stringify(onLab ? labData(value) : value));
   }
   const file = files.get(url.pathname);
   if (!file) {
@@ -193,7 +197,8 @@ export async function handler(req, res) {
     return res.end("Not found");
   }
   try {
-    const body = await readFile(root + file);
+    let body = await readFile(root + file);
+    if (onLab && /\.(html|js|css)$/.test(file)) body = labText(body.toString());
     res.writeHead(200, {
       "Content-Type": types[file.split(".").pop()],
       "Cache-Control": "no-cache",
