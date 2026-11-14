@@ -131,7 +131,7 @@ export async function handler(req, res) {
     return res.end("Read-only prototype");
   }
   if (url.pathname === "/sequence/" || url.pathname === "/sequence") {
-    res.writeHead(308, { Location: "/" + url.search });
+    res.writeHead(308, { Location: (onLab ? LAB_PATH + "/" : "/") + url.search });
     return res.end();
   }
   if (url.pathname.startsWith("/api/collection/")) {
